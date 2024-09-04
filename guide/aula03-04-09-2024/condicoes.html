@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="txt1" name="txt1">
+    <input type="button" value="Verificar" onclick="clicar()">
+    <h1 id="resultado">RESULTADO</h1>
+    <script>
+        var x = document.getElementById("resultado");
+
+        function clicar(){
+            var ve = Number(document.getElementById("txt1").value);
+            console.log(ve)
+            if(ve>100){
+                x.innerText="multado!"
+            }
+            else{
+                x.innerText="sem multa hoje!"
+            }
+            
+        }
+
+    </script>
+</body>
+</html>
