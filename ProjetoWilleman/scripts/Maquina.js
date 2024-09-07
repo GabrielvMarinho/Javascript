@@ -1,3 +1,4 @@
+
 export class Maquina {
     constructor(nome, temperatura) {
         this.nome = nome;
