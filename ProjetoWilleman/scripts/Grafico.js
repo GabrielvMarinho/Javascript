@@ -4,20 +4,22 @@ export class Grafico{
         this.tipoGrafico = tipoGrafico,
         this.labels = labels
         this.listaMaquinas = listaMaquinas
-
     }
 
-    adicionarDados () {
-        this.listaDados = [];
+    // adicionarDados () {
+    //     this.listaDados = [];
 
-        this.listaMaquinas.forEach(maquina => {
-            if (maquina && typeof maquina.getTemperatura === 'function') {
-                this.listaDados.push(maquina.getTemperatura());
-            } else {
-                console.error("Máquina não possui o método getTemperatura ou é inválida.");
-            }
-        });
-        return this.listaDados
+    //     this.listaMaquinas.forEach(maquina => {
+    //         if (maquina && typeof maquina.getTemperatura === 'function') {
+    //             this.listaDados.push(maquina.getTemperatura());
+    //         } else {
+    //             console.error("Máquina não possui o método getTemperatura ou é inválida.");
+    //         }
+    //     });
+    //     return this.listaDados
+    // }
+    getListMaquinas(){
+        return this.listaMaquinas
     }
 
     getTipo(){
