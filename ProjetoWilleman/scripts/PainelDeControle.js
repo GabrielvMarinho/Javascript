@@ -32,10 +32,7 @@ export class PainelDeControle{
     }
     atualizarGrafico(posi){
 
-
-
         this.listaChart[posi].data.datasets[0].data = this.listaGraficos[posi].adicionarDados();
         this.listaChart[posi].update();
     }
-
 }

@@ -1,13 +1,12 @@
 
 export class Maquina {
-    constructor(nome, temperatura) {
+    constructor(nome) {
         this.nome = nome;
-        this.temperatura = temperatura;
     }
     getNome(){
         return this.nome
     }
     getTemperatura(){
-        return this.temperatura
+        return Math.random() * 50+50
     }
 }
