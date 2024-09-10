@@ -8,13 +8,13 @@ import { Servidor } from './Servidor.js'
 const server = new Servidor("server")
 
 //criando objeto Maquina
-const maq1 = new Maquina("maquina 1", "polarArea", ["generico1", "asdasd"]);
-const maq2 = new Maquina("maquina 2", "polarArea", ["generico2", "asdasd"]);
-const maq3 = new Maquina("maquina 3", "polarArea", ["generico3", "asdasd"]);
-const maq4 = new Maquina("maquina 4", "polarArea", ["generico4", "asdasd"]);
+const maq1 = new Maquina("maquina 1", "polarArea", ["maquina1", "asdasd"]);
+const maq2 = new Maquina("maquina 2", "polarArea", ["maquina2", "asdasd"]);
+const maq3 = new Maquina("maquina 3", "polarArea", ["maquina3", "asdasd"]);
+const maq4 = new Maquina("maquina 4", "polarArea", ["maquina4", "asdasd"]);
 
 //criando objeto Painel 
-const painel = new PainelDeControle("Painel do gabi", [maq1, maq2, maq3])
+const painel = new PainelDeControle("Painel do gabi", [maq1, maq2, maq3, maq4])
 // const painel1 = new PainelDeControle("Painel da bi", [maq1, maq2, maq3])
 
 //criando objeto Grafico
@@ -27,7 +27,8 @@ const painel = new PainelDeControle("Painel do gabi", [maq1, maq2, maq3])
 //adicionando grafico ao painel
 painel.addGrafico(maq1, "canva")
 painel.addGrafico(maq2, "canva1")
-painel.addGrafico(maq2, "canva2")
+painel.addGrafico(maq3, "canva2")
+painel.addGrafico(maq4, "canva3")
 
 // painel1.addGrafico(maq3, "canva2")
 // painel1.addGrafico(maq4, "canva3")
