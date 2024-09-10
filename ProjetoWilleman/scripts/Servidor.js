@@ -40,6 +40,7 @@ export class Servidor{
             }
             i +=1
         });
+        
         this.listaPaineis.forEach(painel =>{
             painel.receberDados(matriz)
         });

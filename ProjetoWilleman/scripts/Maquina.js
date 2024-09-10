@@ -14,7 +14,7 @@ export class Maquina {
         return this.nome
     }
     getTemperatura(){
-        this.temperatura += (Math.random() * 2) *Math.random() < 0.5 ? -1 : 1;
+        this.temperatura += (Math.random() * 2-1)
         if(this.temperatura>=100){
             this.temperatura=100
             return this.temperatura
@@ -26,7 +26,7 @@ export class Maquina {
         return this.temperatura
     }
     getUmidade(){
-        this.umidade += (Math.random() * 2 )*Math.random() < 0.5 ? -1 : 1;
+        this.umidade += (Math.random() * 2-1)
         if(this.umidade>=100){
             this.umidade=100
             return this.umidade
@@ -38,7 +38,7 @@ export class Maquina {
         return this.umidade
     }
     getPressao(){
-        this.pressao += (Math.random() * 2 )*Math.random() < 0.5 ? -1 : 1;
+        this.pressao += (Math.random() * 2-1)
         if(this.pressao>=100){
             this.pressao=100
             return this.pressao
@@ -52,7 +52,7 @@ export class Maquina {
     }
     getVibracao(){
         
-        this.vibracao += (Math.random() * 2) *Math.random() < 0.5 ? -1 : 1;
+        this.vibracao += (Math.random() * 2-1)
         if(this.vibracao>=100){
             this.vibracao=100
             return this.vibracao
