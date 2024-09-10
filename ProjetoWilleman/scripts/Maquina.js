@@ -2,10 +2,10 @@
 export class Maquina {
     constructor(nome, tipoGrafico, labels) {
         this.nome = nome;
-        this.temperatura=0;
-        this.umidade=0;
-        this.pressao=0;
-        this.vibracao=0;
+        this.temperatura=50;// graus celcius 
+        this.umidade=50;// percentual ->>>>>>>>>>>>>>>>>>>>>>>todos em porcentagem de 0% sendo seguro e 100% sendo crítico
+        this.pressao=50;// milimetros por segundo 
+        this.vibracao=50;// bar 
         this.tipoGrafico = tipoGrafico;
         this.labels = labels;
 
@@ -14,16 +14,54 @@ export class Maquina {
         return this.nome
     }
     getTemperatura(){
-        return Math.random() * 50+50
+        this.temperatura += (Math.random() * 2) *Math.random() < 0.5 ? -1 : 1;
+        if(this.temperatura>=100){
+            this.temperatura=100
+            return this.temperatura
+        }
+        else if(this.temperatura<=0){
+            this.temperatura=0
+            return this.temperatura
+        }
+        return this.temperatura
     }
     getUmidade(){
-        return Math.random() * 50+50
+        this.umidade += (Math.random() * 2 )*Math.random() < 0.5 ? -1 : 1;
+        if(this.umidade>=100){
+            this.umidade=100
+            return this.umidade
+        }
+        else if(this.umidade<=0){
+            this.umidade=0
+            return this.umidade
+        }
+        return this.umidade
     }
     getPressao(){
-        return Math.random() * 50+50
+        this.pressao += (Math.random() * 2 )*Math.random() < 0.5 ? -1 : 1;
+        if(this.pressao>=100){
+            this.pressao=100
+            return this.pressao
+        }
+        else if(this.pressao<=0){
+            this.pressao=0
+            return this.pressao
+        }
+        return this.pressao
+
     }
     getVibracao(){
-        return Math.random() * 50+50
+        
+        this.vibracao += (Math.random() * 2) *Math.random() < 0.5 ? -1 : 1;
+        if(this.vibracao>=100){
+            this.vibracao=100
+            return this.vibracao
+        }
+        else if(this.vibracao<=0){
+            this.vibracao=0
+            return this.vibracao
+        }
+        return this.vibracao
     }
     getAll(){
         var array  = [];

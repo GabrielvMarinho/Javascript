@@ -53,7 +53,7 @@ function atualizarTemperaturas() {
 function iniciarAtualizacao() {
     //função que chama o atualizarTemperaturas com um delay
     atualizarTemperaturas();
-    setInterval(atualizarTemperaturas, 1000);
+    setInterval(atualizarTemperaturas, 50);
 }
 //chama o metodo quando a janela carregar
 window.onload = iniciarAtualizacao;

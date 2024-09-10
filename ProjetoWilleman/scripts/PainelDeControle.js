@@ -21,10 +21,8 @@ export class PainelDeControle{
 
                 }
             }
-
             
             if (this.listaChart[i]) {
-                console.log("!entrou")
                 this.listaChart[i].data.datasets[0].data = dadosCorresp;
                 this.listaChart[i].update();
             }
