@@ -41,12 +41,12 @@ export class PainelDeControle{
     addGrafico(maquina, id){
         if(maquina instanceof Maquina){
             this.listaChart.push( new Chart(id, {
+                //TEM ALGUM ERRO AQUI
                 type: this.listaMaquinas[this.listaMaquinas.length-1].getTipo(),
                 data: {
                     labels: this.listaMaquinas[this.listaMaquinas.length-1].getLabels(),
                     datasets: [{
                         label: '# of Votes',
-                        data: [12, 19, 3, 5, 2], // Dados para o gráfico
                         backgroundColor: [  // Cores de fundo das barras
                             'rgba(255, 99, 132, 0.6)', // Red
                             'rgba(54, 162, 235, 0.6)', // Blue
@@ -63,11 +63,13 @@ export class PainelDeControle{
                         ],
                         borderWidth: 1 // Largura da borda
                     }],
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
+                    
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero:true,
+                            max:100
                         }
                     }
                 }

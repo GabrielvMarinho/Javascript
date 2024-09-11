@@ -48,17 +48,18 @@ const caretaker = new Caretaker("caretaker")
 function atualizarTemperaturas() {
     //FUNÇÃO OBSERVER -> chama todo os objetos na lista de paineis de server e manda os dados para eles
     server.atualizar()
+    console.clear()
+
     caretaker.save(server.createMemento())
     console.log(caretaker.getListaMementos())
 
 
-    console.log("--------")
 }
 function iniciarAtualizacao() {
     //função que chama o atualizarTemperaturas com um delay
     atualizarTemperaturas();
     
-    setInterval(atualizarTemperaturas, 1000);
+    setInterval(atualizarTemperaturas, 10);
 }
 //chama o metodo quando a janela carregar
 window.onload = iniciarAtualizacao;
