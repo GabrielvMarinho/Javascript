@@ -1,11 +1,13 @@
 import { Maquina } from "./Maquina.js"
 import { PainelDeControle } from "./PainelDeControle.js"
+import { Memento } from "./Memento.js"
 
 export class Servidor{
     constructor(nome){
         this.nome = nome
         this.listaPaineis = []
         this.listaMaquinas = []
+        
     }
     adicionarMaquina(maquina){
         if(maquina instanceof Maquina){
@@ -44,7 +46,12 @@ export class Servidor{
         this.listaPaineis.forEach(painel =>{
             painel.receberDados(matriz)
         });
-
+        this.matriz = matriz
+    }
+    createMemento(){
+        console.log("novo")
+        return new Memento(this.matriz)
+        
     }
 
 }   

@@ -5,6 +5,16 @@ export class Caretaker{
         this.listaMementos = []
     }
     save(memento){
-        this.listaMementos.append(memento)
+        this.listaMementos.push(memento)
+    }
+    getListaMementos(){
+        var string = ""
+        this.listaMementos.forEach(elemento =>{
+            string+=elemento.getEstado()
+        })
+        return string
+    }
+    getIndex(id){
+        return this.listaMementos[id]
     }
 }

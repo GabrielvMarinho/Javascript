@@ -1,4 +1,5 @@
 import { Maquina } from './Maquina.js'
+import { Memento } from './Memento.js';
 
 export class PainelDeControle{
     constructor(nomePainel, listaMaquinas){
@@ -32,7 +33,7 @@ export class PainelDeControle{
     
 
     
-
+    
 
 
 

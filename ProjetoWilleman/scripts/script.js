@@ -3,6 +3,7 @@ import { Maquina } from './Maquina.js'
 //import { Grafico } from './Grafico.js'
 import { PainelDeControle } from './PainelDeControle.js'
 import { Servidor } from './Servidor.js'
+import { Caretaker } from './Caretaker.js'
 
 //criando objeto Server
 const server = new Servidor("server")
@@ -44,16 +45,23 @@ server.adicionarMaquina(maq3)
 server.adicionarMaquina(maq4)
 
 
+const caretaker = new Caretaker("caretaker")
+
 
 function atualizarTemperaturas() {
     //FUNÇÃO OBSERVER -> chama todo os objetos na lista de paineis de server e manda os dados para eles
     server.atualizar()
+    caretaker.save(server.createMemento())
+    console.log(caretaker.getListaMementos())
 
+
+    console.log("--------")
 }
 function iniciarAtualizacao() {
     //função que chama o atualizarTemperaturas com um delay
     atualizarTemperaturas();
-    setInterval(atualizarTemperaturas, 50);
+    
+    setInterval(atualizarTemperaturas, 1000);
 }
 //chama o metodo quando a janela carregar
 window.onload = iniciarAtualizacao;
