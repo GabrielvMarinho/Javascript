@@ -8,6 +8,7 @@ export class Maquina {
         this.vibracao=50;// bar 
         this.tipoGrafico = tipoGrafico;
         this.labels = labels;
+        this.legenda = ["TEMPERATURA", "UMIDADE", "PRESSÃO", "VIBRAÇÃO"];
 
     }
     getNome(){
@@ -79,11 +80,14 @@ export class Maquina {
         array.push(this.getVibracao())
         return array
     }
+    getLegenda(){
+        return this.legenda;
+    }
     
     getTipo(){
-        return this.tipoGrafico
+        return this.tipoGrafico;
     }
     getLabels(){
-        return this.labels
+        return this.labels;
     }
 }

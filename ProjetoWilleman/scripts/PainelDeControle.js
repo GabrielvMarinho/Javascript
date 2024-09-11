@@ -40,23 +40,21 @@ export class PainelDeControle{
     
     addGrafico(maquina, id){
         if(maquina instanceof Maquina){
+            
             this.listaChart.push( new Chart(id, {
                 //TEM ALGUM ERRO AQUI
                 type: this.listaMaquinas[this.listaMaquinas.length-1].getTipo(),
                 data: {
-                    labels: this.listaMaquinas[this.listaMaquinas.length-1].getLabels(),
+                    labels: maquina.getLabels(),
                     datasets: [{
-                        label: '# of Votes',
                         backgroundColor: [  // Cores de fundo das barras
                             'rgba(255, 99, 132, 0.6)', // Red
-                            'rgba(54, 162, 235, 0.6)', // Blue
                             'rgba(255, 206, 86, 0.6)', // Yellow
                             'rgba(75, 192, 192, 0.6)', // Green
                             'rgba(153, 102, 255, 0.6)' // Purple
                         ],
                         borderColor: [  // Cores da borda das barras
                             'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
                             'rgba(255, 206, 86, 1)',
                             'rgba(75, 192, 192, 1)',
                             'rgba(153, 102, 255, 1)'
@@ -66,11 +64,18 @@ export class PainelDeControle{
                     
                 },
                 options: {
-                    scales: {
-                        r: {
-                            beginAtZero:true,
-                            max:100
-                        }
+                    responsive: true,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    const dataIndex = tooltipItem.dataIndex;
+                                    const labelsCustomizadas = maquina.getLegenda();
+                                    return labelsCustomizadas[dataIndex-1] + ': ' + tooltipItem.raw; // Altera os rótulos exibidos nos tooltips
+                                }
+                            }
+                        },
+            
                     }
                 }
             }));

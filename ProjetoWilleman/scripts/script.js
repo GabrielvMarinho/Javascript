@@ -9,8 +9,8 @@ import { Caretaker } from './Caretaker.js'
 const server = new Servidor("server")
 
 //criando objeto Maquina
-const maq1 = new Maquina("maquina 1", "polarArea", ["maquina1", "asdasd"]);
-const maq2 = new Maquina("maquina 2", "polarArea", ["maquina2", "asdasd"]);
+const maq1 = new Maquina("maquina 1", "polarArea", ["maquina1", "xx"]);
+const maq2 = new Maquina("maquina 2", "polarArea", ["maquina2", "xx"]);
 const maq3 = new Maquina("maquina 3", "polarArea", ["maquina3", "asdasd"]);
 
 //criando objeto Painel 
@@ -49,8 +49,8 @@ function atualizarTemperaturas() {
     //FUNÇÃO OBSERVER -> chama todo os objetos na lista de paineis de server e manda os dados para eles
     server.atualizar()
     caretaker.save(server.createMemento())
-    console.clear()
-    console.log(caretaker.getListaMementos())
+    // console.clear()
+    // console.log(caretaker.getListaMementos())
 
 
 }
