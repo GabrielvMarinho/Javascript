@@ -58,7 +58,7 @@ export class Maquina {
     }
     getVibracao(){
         
-        this.vibracao += Math.round((Math.random() * 2-0.95)*10)/10
+        this.vibracao += Math.round((Math.random() * 2-1)*10)/10
         this.vibracao = parseFloat(this.vibracao.toFixed(1));
 
         if(this.vibracao>=100){
