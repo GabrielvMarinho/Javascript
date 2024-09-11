@@ -48,9 +48,8 @@ const caretaker = new Caretaker("caretaker")
 function atualizarTemperaturas() {
     //FUNÇÃO OBSERVER -> chama todo os objetos na lista de paineis de server e manda os dados para eles
     server.atualizar()
-    console.clear()
-
     caretaker.save(server.createMemento())
+    console.clear()
     console.log(caretaker.getListaMementos())
 
 
