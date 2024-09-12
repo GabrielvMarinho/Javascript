@@ -8,13 +8,12 @@ export class PainelDeControle{
         this.listaChart =[]
         listaMaquinas.forEach(maquina =>{
             if(maquina instanceof Maquina){
+                
                 var canvas = document.createElement("canvas")
                 document.body.appendChild(canvas)
                 canvas.id = maquina.getNome()+this.getNomePainel()
-                console.log(canvas)
-                console.log(canvas.id)
+                
                 this.listaChart.push( new Chart(canvas.id, {
-                    //TEM ALGUM ERRO AQUI
                     type: this.listaMaquinas[this.listaMaquinas.length-1].getTipo(),
                     data: {
                         datasets: [{

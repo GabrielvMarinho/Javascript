@@ -33,6 +33,9 @@ export class Servidor{
     getMaquinaIndex(id){
         return this.listaMaquinas[id]
     }
+    getlistaMaquinas(){
+        return this.listaMaquinas
+    }
     adicionarMaquina(maquina){
         if(maquina instanceof Maquina){
             this.listaMaquinas.push(maquina)

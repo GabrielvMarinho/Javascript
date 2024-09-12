@@ -17,13 +17,13 @@ let listaMaquinas =[new Maquina("MAQUINA 1", "polarArea"),
                     new Maquina("MAQUINA 5", "polarArea"),
                     new Maquina("MAQUINA 6", "polarArea"),
                     new Maquina("MAQUINA 7", "polarArea"),]
+                    
 //adicionando maquinas ao server
 server.addlistaMaquina(listaMaquinas)
 //criando objeto Painel e criando graficos
-const painel = new PainelDeControle("Painel do gabi", listaMaquinas)
+const painel = new PainelDeControle("Painel do gabi", server.getlistaMaquinas())
 //adiciona paineis ao server
 server.adicionarPainel(painel)
-
 
 function atualizarTemperaturas() {
     //FUNÇÃO OBSERVER -> chama todo os objetos na lista de paineis de server e manda os dados para eles
@@ -32,8 +32,6 @@ function atualizarTemperaturas() {
     //mostra o histórico memento
     console.clear()
     console.log(caretaker.getListaMementos())
-
-
 }
 
 //função que chama o atualizarTemperaturas com um delay
@@ -43,4 +41,3 @@ function iniciarAtualizacao() {
 }
 //chama o metodo quando a janela carregar
 window.onload = iniciarAtualizacao;
-
