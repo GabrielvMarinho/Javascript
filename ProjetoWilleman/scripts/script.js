@@ -12,9 +12,11 @@ const server = new Servidor("server")
 const maq1 = new Maquina("MAQUINA 1", "polarArea");
 const maq2 = new Maquina("MAQUINA 2", "polarArea");
 const maq3 = new Maquina("MAQUINA 3", "polarArea");
-
+const maq4 = new Maquina("MAQUINA 1", "polarArea");
+const maq5 = new Maquina("MAQUINA 2", "polarArea");
+const maq6 = new Maquina("MAQUINA 3", "polarArea");
 //criando objeto Painel 
-const painel = new PainelDeControle("Painel do gabi", [maq1, maq2, maq3])
+const painel = new PainelDeControle("Painel do gabi", [maq1, maq2, maq3, maq4, maq5, maq6])
 // const painel1 = new PainelDeControle("Painel da bi", [maq1, maq2, maq3])
 
 //criando objeto Grafico
@@ -28,7 +30,9 @@ const painel = new PainelDeControle("Painel do gabi", [maq1, maq2, maq3])
 painel.addGrafico(maq1, "canva")
 painel.addGrafico(maq2, "canva1")
 painel.addGrafico(maq3, "canva2")
-
+painel.addGrafico(maq4, "canva3")
+painel.addGrafico(maq5, "canva4")
+painel.addGrafico(maq6, "canva5")
 // painel1.addGrafico(maq3, "canva2")
 // painel1.addGrafico(maq4, "canva3")
 
@@ -40,7 +44,9 @@ server.adicionarPainel(painel)
 server.adicionarMaquina(maq1)
 server.adicionarMaquina(maq2)
 server.adicionarMaquina(maq3)
-
+server.adicionarMaquina(maq4)
+server.adicionarMaquina(maq5)
+server.adicionarMaquina(maq6)
 
 const caretaker = new Caretaker("caretaker")
 
