@@ -64,6 +64,11 @@ export class PainelDeControle{
                     
                 },
                 options: {
+                    scales: {
+                        r: {
+                            beginAtZero:true,
+                            max:100,
+                        }},
                     responsive: true,
                     plugins: {
                         tooltip: {
@@ -71,12 +76,15 @@ export class PainelDeControle{
                                 label: function(tooltipItem) {
                                     const dataIndex = tooltipItem.dataIndex;
                                     const labelsCustomizadas = maquina.getLegenda();
-                                    return labelsCustomizadas[dataIndex-1] + ': ' + tooltipItem.raw; // Altera os rótulos exibidos nos tooltips
+                                    return labelsCustomizadas[dataIndex-1] + ': ' + tooltipItem.raw; 
                                 }
                             }
                         },
             
+                    
+                    
                     }
+               
                 }
             }));
         }
