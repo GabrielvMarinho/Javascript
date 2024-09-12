@@ -1,13 +1,12 @@
 
 export class Maquina {
-    constructor(nome, tipoGrafico, labels) {
+    constructor(nome, tipoGrafico) {
         this.nome = nome;
         this.temperatura=50;// graus celcius 
         this.umidade=50;// percentual ->>>>>>>>>>>>>>>>>>>>>>>todos em porcentagem de 0% sendo seguro e 100% sendo crítico
         this.pressao=50;// milimetros por segundo 
         this.vibracao=50;// bar 
         this.tipoGrafico = tipoGrafico;
-        this.labels = labels;
         this.legenda = ["TEMPERATURA", "UMIDADE", "PRESSÃO", "VIBRAÇÃO"];
 
     }
@@ -87,7 +86,5 @@ export class Maquina {
     getTipo(){
         return this.tipoGrafico;
     }
-    getLabels(){
-        return this.labels;
-    }
+    
 }

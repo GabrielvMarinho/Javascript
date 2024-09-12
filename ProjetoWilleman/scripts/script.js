@@ -9,9 +9,9 @@ import { Caretaker } from './Caretaker.js'
 const server = new Servidor("server")
 
 //criando objeto Maquina
-const maq1 = new Maquina("maquina 1", "polarArea", ["maquina1", "xx"]);
-const maq2 = new Maquina("maquina 2", "polarArea", ["maquina2", "xx"]);
-const maq3 = new Maquina("maquina 3", "polarArea", ["maquina3", "asdasd"]);
+const maq1 = new Maquina("MAQUINA 1", "polarArea");
+const maq2 = new Maquina("MAQUINA 2", "polarArea");
+const maq3 = new Maquina("MAQUINA 3", "polarArea");
 
 //criando objeto Painel 
 const painel = new PainelDeControle("Painel do gabi", [maq1, maq2, maq3])

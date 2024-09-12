@@ -45,7 +45,6 @@ export class PainelDeControle{
                 //TEM ALGUM ERRO AQUI
                 type: this.listaMaquinas[this.listaMaquinas.length-1].getTipo(),
                 data: {
-                    labels: maquina.getLabels(),
                     datasets: [{
                         backgroundColor: [  // Cores de fundo das barras
                             'rgba(255, 99, 132, 0.6)', // Red
@@ -71,6 +70,10 @@ export class PainelDeControle{
                         }},
                     responsive: true,
                     plugins: {
+                        title:{
+                            display:true,
+                            text:maquina.getNome()
+                        },
                         tooltip: {
                             callbacks: {
                                 label: function(tooltipItem) {
