@@ -8,11 +8,23 @@ export class PainelDeControle{
         this.listaChart =[]
         listaMaquinas.forEach(maquina =>{
             if(maquina instanceof Maquina){
+
                 
+                var div = document.createElement("div")
+                div.id = "div"+maquina.getNome()+this.getNomePainel()
+                document.body.appendChild(div)
+                var divCorreta = document.getElementById(div.id)
+
                 var canvas = document.createElement("canvas")
-                document.body.appendChild(canvas)
                 canvas.id = maquina.getNome()+this.getNomePainel()
-                
+
+                var h1 = document.createElement("h1");
+                h1.innerText = "Não danificado"
+                h1.id = "h1" + maquina.getNome()+this.getNomePainel();
+
+                divCorreta.appendChild(canvas)
+                divCorreta.appendChild(h1)
+
                 this.listaChart.push( new Chart(canvas.id, {
                     type: this.listaMaquinas[this.listaMaquinas.length-1].getTipo(),
                     data: {
@@ -85,6 +97,12 @@ export class PainelDeControle{
 
                 }
             }
+
+            console.log(maquina.getDanificado())
+            var h1 = document.getElementById("h1" + maquina.getNome() + this.getNomePainel())
+            if (maquina.getDanificado()){
+                h1.innerText = "DANIFICADO"
+            } 
             
             if (this.listaChart[i]) {
                 this.listaChart[i].data.datasets[0].data = dadosCorresp;

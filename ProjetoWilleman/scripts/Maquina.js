@@ -8,9 +8,31 @@ export class Maquina {
         this.vibracao=50;// bar 
         this.tipoGrafico = tipoGrafico;
         this.legenda = ["TEMPERATURA", "UMIDADE", "PRESSÃO", "VIBRAÇÃO"];
+        this.maquinaON = true;
+        this.danificado = false;
 
     }
+
+    getDanificado (){
+        return this.danificado
+    }
+
+    setDanificado () {
+        this.danificado = true;
+        this.maquinaON = false;
+    }
+
+    setMaquinaON () {
+        this.maquinaON = true;
+
+    }
+
+    setMaquinaOFF () {
+        this.maquinaON = false;
+    }
+
     getNome(){
+
         return this.nome
     }
     getTemperatura(){
@@ -25,7 +47,7 @@ export class Maquina {
             this.temperatura = parseFloat(this.pressao.toFixed(1));
             return this.temperatura
         }
-        this.temperatura += Math.round((Math.random() * 2-1)*10)/10
+        this.temperatura += Math.round((Math.random() * 2-0.1)*10)/10
         this.temperatura = parseFloat(this.temperatura.toFixed(1));
         return this.temperatura
     }
@@ -82,7 +104,12 @@ export class Maquina {
         array.push(this.getUmidade())
         array.push(this.getPressao())
         array.push(this.getVibracao())
-        return array
+
+        if (this.maquinaON == true){
+            return array
+        } else {
+            return [0,0,0,0];
+        }
     }
     getLegenda(){
         return this.legenda;

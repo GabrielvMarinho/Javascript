@@ -11,17 +11,13 @@ const server = new Servidor("server")
 
 //lista de maquinas temporárias
 let listaMaquinas =[new Maquina("MAQUINA 1", "polarArea"),
-                    new Maquina("MAQUINA 2", "polarArea"),
-                    new Maquina("MAQUINA 3", "polarArea"),
-                    new Maquina("MAQUINA 4", "polarArea"),
-                    new Maquina("MAQUINA 5", "polarArea"),
-                    new Maquina("MAQUINA 6", "polarArea"),
-                    new Maquina("MAQUINA 7", "polarArea"),]
+                    new Maquina("MAQUINA 2", "polarArea")]
                     
 //adicionando maquinas ao server
 server.addlistaMaquina(listaMaquinas)
 //criando objeto Painel e criando graficos
 const painel = new PainelDeControle("Painel do gabi", server.getlistaMaquinas())
+
 //adiciona paineis ao server
 server.adicionarPainel(painel)
 

@@ -62,6 +62,15 @@ export class Servidor{
             if (maquina && typeof maquina.getTemperatura === 'function') {
                 matriz[i].push(this.listaMaquinas[i].getNome())
                 maquina.getAll().forEach( dado =>{
+                    if (dado >= 100 ){
+                        const confirmacao =  confirm("Você quer confirmar que irá desligar?");
+
+                        if (confirmacao) {
+                            maquina.setMaquinaOFF();
+                        } else {
+                            maquina.setDanificado();
+                        }
+                    }
                     matriz[i].push(dado)
                 })
                 
@@ -72,12 +81,11 @@ export class Servidor{
         });
         
         this.listaPaineis.forEach(painel =>{
-            painel.receberDados(matriz)
+            painel.receberDados(matriz);
         });
         this.matriz = matriz
     }
     createMemento(){
-        console.log("novo")
         return new Memento(this.matriz)
         
     }
