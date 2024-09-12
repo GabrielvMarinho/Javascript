@@ -9,6 +9,30 @@ export class Servidor{
         this.listaMaquinas = []
         
     }
+    addlistaMaquina(lista){
+        let existe=false;
+        lista.forEach(elemento =>{
+            if(elemento instanceof Maquina){
+                this.listaMaquinas.forEach( maquina=>{
+                    if(maquina.getNome()==elemento.getNome()){
+                        console.log("maquina já adicionada")
+                    }
+
+                })
+                if(existe==false){
+                    this.listaMaquinas.push(elemento)
+                }
+            }
+            else{
+                console.log("erro não é objeto maquina")
+            }
+            existe=false
+        })
+        
+    }
+    getMaquinaIndex(id){
+        return this.listaMaquinas[id]
+    }
     adicionarMaquina(maquina){
         if(maquina instanceof Maquina){
             this.listaMaquinas.push(maquina)
@@ -25,6 +49,7 @@ export class Servidor{
         else{
             console.log("erro não é objeto gráfico")
         }
+        
     }
     atualizar(){
         var i =0;

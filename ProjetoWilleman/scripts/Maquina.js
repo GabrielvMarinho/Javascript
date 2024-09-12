@@ -62,8 +62,6 @@ export class Maquina {
 
     }
     getVibracao(){
-        
-       
 
         if(this.vibracao>=100){
             this.vibracao=100
