@@ -63,20 +63,17 @@ export class Servidor{
                 matriz[i].push(this.listaMaquinas[i].getNome())
                 maquina.getAll().forEach( dado =>{
 
-                    
+                        
                         //observer
                         this.listaPaineis.forEach(painel =>{
                             var mensagem = document.getElementById("mensagem"+maquina.getNome()+painel.getNomePainel())
 
-                            mensagem.innerText=""
                             
                             if (dado >= 80 ){
-                                
                                 mensagem.innerText="DADOS CRITICOS"
-                                
-                                
-
+                            
                             }        
+                            
                         })
                         if(dado>=100){
                             maquina.setDanificado()
