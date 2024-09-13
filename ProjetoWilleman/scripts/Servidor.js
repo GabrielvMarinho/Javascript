@@ -88,14 +88,17 @@ export class Servidor{
             i +=1
         });
         
-        this.listaPaineis.forEach(painel =>{
-            painel.receberDados(matriz);
-        });
+        this.metodoObserver(matriz)
         this.matriz = matriz
     }
     createMemento(){
         return new Memento(this.matriz)
         
+    }
+    metodoObserver(matriz){
+        this.listaPaineis.forEach(painel =>{
+            painel.receberDados(matriz);
+        });
     }
 
 }   
