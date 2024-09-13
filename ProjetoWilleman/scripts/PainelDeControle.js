@@ -6,13 +6,17 @@ export class PainelDeControle{
         this.nomePainel = nomePainel
         this.listaMaquinas = listaMaquinas
         this.listaChart =[]
+
         listaMaquinas.forEach(maquina =>{
+
             if(maquina instanceof Maquina){
 
-                
                 var div = document.createElement("div")
                 div.id = "div"+maquina.getNome()+this.getNomePainel()
                 document.body.appendChild(div)
+                div.className ="divMaquinaComum"
+                console.log(div.class)
+                div.style.backgroundColor="red"
                 var divCorreta = document.getElementById(div.id)
 
                 //criando canvas para o grafico
@@ -29,21 +33,31 @@ export class PainelDeControle{
                 statusLigado.innerText = "Ligado"
                 statusLigado.id = "statusLigado" + maquina.getNome()+this.getNomePainel();
 
-                //criando botao de ligar e desligar
-                var botaoLiga = document.createElement("button")
-                botaoLiga.innerText = "CLIQUE BEM AQUI"
-                botaoLiga.id = "botaoLiga" + maquina.getNome()+this.getNomePainel();
+                //criando botao de ligar e desligar com checkbox e label
+                var checkbox = document.createElement("input")
+                checkbox.type="checkbox"
+                checkbox.id = "checkBox" + maquina.getNome()+this.getNomePainel();
+                checkbox.className = "inputLigaDesliga"
 
+
+                var label = document.createElement("label")
+                label.htmlFor = checkbox.id
+                label.className="labelLigaDesliga"
+                label.id = "label" + maquina.getNome()+this.getNomePainel();
+                label.innerText = "clique aqui"
+
+                //mensagem de erro
                 var mensagemErro = document.createElement("h2")
                 mensagemErro.id = "mensagem" + maquina.getNome()+this.getNomePainel();
 
-                botaoLiga.addEventListener("click", maquina.mudarMaquinaON.bind(maquina))
+                checkbox.addEventListener("click", maquina.mudarMaquinaON.bind(maquina))
 
                 //adicionando todos os itens
                 divCorreta.appendChild(canvas)
                 divCorreta.appendChild(statusLigado)
                 divCorreta.appendChild(statusDanificado)
-                divCorreta.appendChild(botaoLiga)
+                divCorreta.appendChild(checkbox)
+                divCorreta.appendChild(label)
                 divCorreta.appendChild(mensagemErro)
 
 
@@ -113,11 +127,13 @@ export class PainelDeControle{
         this.listaMaquinas.forEach( maquina =>{
 
             const dadosCorresp = dados.find(dado =>dado[0] === maquina.getNome())
-
+            let maiorvalor = 0
             if(dadosCorresp){
                 for(var y=0;y<dadosCorresp.length;y++){
                     array.push(dadosCorresp[y])
-
+                    if(dadosCorresp[y]>maiorvalor){
+                        maiorvalor = dadosCorresp[y]
+                    }
                 }
             }
 
@@ -127,6 +143,35 @@ export class PainelDeControle{
                 h1.innerText = "DANIFICADO"
 
             } 
+            var div = document.getElementById("div"+maquina.getNome()+this.getNomePainel())
+
+            const startColor = [55, 65, 79];
+            const endColor = [254, 95, 85]; 
+            
+
+            const percentage = (maiorvalor-60)*2.5/100;
+
+            
+
+            
+            // const só fica dentro do if
+            if(maiorvalor<=60){
+                var r = Math.round(startColor[0]);
+                var g = Math.round(startColor[1]);
+                var b = Math.round(startColor[2]);
+
+            }
+            else{
+                console.log("entrou")
+                var r = Math.round(startColor[0] + (endColor[0] - startColor[0]) * percentage);
+                var g = Math.round(startColor[1] + (endColor[1] - startColor[1]) * percentage);
+                var b = Math.round(startColor[2] + (endColor[2] - startColor[2]) * percentage);
+            }
+
+            div.style.backgroundColor =`rgb(${r}, ${g}, ${b})`
+
+
+
 
             var mensagem = document.getElementById("mensagem"+maquina.getNome()+this.getNomePainel())
             var h1 = document.getElementById("statusLigado" + maquina.getNome() + this.getNomePainel())
