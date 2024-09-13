@@ -17,9 +17,11 @@ let listaMaquinas =[new Maquina("MAQUINA 1", "polarArea"),
 server.addlistaMaquina(listaMaquinas)
 //criando objeto Painel e criando graficos
 const painel = new PainelDeControle("Painel do gabi", server.getlistaMaquinas())
+const painel1 = new PainelDeControle("Painel do gabis", server.getlistaMaquinas())
 
 //adiciona paineis ao server
 server.adicionarPainel(painel)
+server.adicionarPainel(painel1)
 
 function atualizarTemperaturas() {
     //FUNÇÃO OBSERVER -> chama todo os objetos na lista de paineis de server e manda os dados para eles
