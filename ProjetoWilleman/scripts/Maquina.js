@@ -12,6 +12,9 @@ export class Maquina {
         this.danificado = false;
 
     }
+    getMaquinaOn(){
+        return this.maquinaON
+    }
 
     getDanificado (){
         return this.danificado
@@ -22,14 +25,27 @@ export class Maquina {
         this.maquinaON = false;
     }
 
-    setMaquinaON () {
-        this.maquinaON = true;
+    mudarMaquinaON () {
+        if(!this.danificado){
+            if (this.getMaquinaOn()){
+                this.maquinaON = false;
+            }
+            else{
+                this.pressao =50;
+                this.temperatura =50;
+                this.vibracao =50;
+                this.umidade =50;
+                this.maquinaON = true;
+            }
+    }
+    else{
+        alert("impossivel ligar, esta estragada")
 
     }
-
-    setMaquinaOFF () {
-        this.maquinaON = false;
+        
     }
+
+    
 
     getNome(){
 
@@ -47,7 +63,7 @@ export class Maquina {
             this.temperatura = parseFloat(this.pressao.toFixed(1));
             return this.temperatura
         }
-        this.temperatura += Math.round((Math.random() * 2-0.1)*10)/10
+        this.temperatura += Math.round((Math.random() * 2+1.1)*10)/10
         this.temperatura = parseFloat(this.temperatura.toFixed(1));
         return this.temperatura
     }
@@ -99,13 +115,14 @@ export class Maquina {
         return this.vibracao
     }
     getAll(){
-        var array  = [];
-        array.push(this.getTemperatura())
-        array.push(this.getUmidade())
-        array.push(this.getPressao())
-        array.push(this.getVibracao())
-
+        
         if (this.maquinaON == true){
+            var array  = [];
+            array.push(this.getTemperatura())
+            array.push(this.getUmidade())
+            array.push(this.getPressao())
+            array.push(this.getVibracao())
+
             return array
         } else {
             return [0,0,0,0];

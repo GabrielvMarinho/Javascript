@@ -15,15 +15,38 @@ export class PainelDeControle{
                 document.body.appendChild(div)
                 var divCorreta = document.getElementById(div.id)
 
+                //criando canvas para o grafico
                 var canvas = document.createElement("canvas")
                 canvas.id = maquina.getNome()+this.getNomePainel()
 
-                var h1 = document.createElement("h1");
-                h1.innerText = "Não danificado"
-                h1.id = "h1" + maquina.getNome()+this.getNomePainel();
+                //criando status danificado ou nao danificado
+                var statusDanificado = document.createElement("h1");
+                statusDanificado.innerText = "Não danificado"
+                statusDanificado.id = "statusDanificado" + maquina.getNome()+this.getNomePainel();
 
+                //criando status ligado ou desligado
+                var statusLigado = document.createElement("h1");
+                statusLigado.innerText = "Ligado"
+                statusLigado.id = "statusLigado" + maquina.getNome()+this.getNomePainel();
+
+                //criando botao de ligar e desligar
+                var botaoLiga = document.createElement("button")
+                botaoLiga.innerText = "CLIQUE BEM AQUI"
+                botaoLiga.id = "botaoLiga" + maquina.getNome()+this.getNomePainel();
+
+                var mensagemErro = document.createElement("h2")
+                mensagemErro.id = "mensagem" + maquina.getNome()+this.getNomePainel();
+
+                botaoLiga.addEventListener("click", maquina.mudarMaquinaON.bind(maquina))
+
+                //adicionando todos os itens
                 divCorreta.appendChild(canvas)
-                divCorreta.appendChild(h1)
+                divCorreta.appendChild(statusLigado)
+                divCorreta.appendChild(statusDanificado)
+                divCorreta.appendChild(botaoLiga)
+                divCorreta.appendChild(mensagemErro)
+
+
 
                 this.listaChart.push( new Chart(canvas.id, {
                     type: this.listaMaquinas[this.listaMaquinas.length-1].getTipo(),
@@ -49,7 +72,7 @@ export class PainelDeControle{
                         scales: {
                             r: {
                                 beginAtZero:true,
-                                max:100,
+                                max:100
                             }},
                         responsive: true,
                         plugins: {
@@ -98,11 +121,22 @@ export class PainelDeControle{
                 }
             }
 
-            console.log(maquina.getDanificado())
-            var h1 = document.getElementById("h1" + maquina.getNome() + this.getNomePainel())
+            var h1 = document.getElementById("statusDanificado" + maquina.getNome() + this.getNomePainel())
+
             if (maquina.getDanificado()){
                 h1.innerText = "DANIFICADO"
+
             } 
+
+            var mensagem = document.getElementById("mensagem"+maquina.getNome()+this.getNomePainel())
+            var h1 = document.getElementById("statusLigado" + maquina.getNome() + this.getNomePainel())
+            if (!maquina.getMaquinaOn()){
+                h1.innerText = "DESLIGADO"
+                mensagem.innerText =""
+
+            }else{
+                h1.innerText = "LIGADO"
+            }
             
             if (this.listaChart[i]) {
                 this.listaChart[i].data.datasets[0].data = dadosCorresp;

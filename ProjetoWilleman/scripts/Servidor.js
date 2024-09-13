@@ -62,13 +62,21 @@ export class Servidor{
             if (maquina && typeof maquina.getTemperatura === 'function') {
                 matriz[i].push(this.listaMaquinas[i].getNome())
                 maquina.getAll().forEach( dado =>{
-                    if (dado >= 100 ){
-                        const confirmacao =  confirm("Você quer confirmar que irá desligar?");
+                    if (dado >= 80 ){
+                        // const confirmacao =  confirm("Você quer confirmar que irá desligar?");
+                        
+                        this.listaPaineis.forEach(painel =>{
+                            var mensagem = document.getElementById("mensagem"+maquina.getNome()+painel.getNomePainel())
 
-                        if (confirmacao) {
-                            maquina.setMaquinaOFF();
-                        } else {
-                            maquina.setDanificado();
+                            if(mensagem.innerText=="DADOS CRITICOS"){
+                            }else{
+                                mensagem.innerText="DADOS CRITICOS"
+                            }
+                            
+                        })
+                        if(dado>=100){
+                            maquina.setDanificado()
+                            
                         }
                     }
                     matriz[i].push(dado)
