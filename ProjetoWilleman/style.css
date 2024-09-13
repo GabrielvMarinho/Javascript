@@ -45,7 +45,10 @@ canvas{
     max-height: 400px;
 
 }
-
-.inputLigaDesliga:checked +.labelLigaDesliga{
-    background-color: antiquewhite;
+.labelLigaDesliga{
+    padding: 2vw;
+}
+.inputLigaDesliga:checked + .labelLigaDesliga{
+    padding: 10vw;
+    background-color: aqua;
 }

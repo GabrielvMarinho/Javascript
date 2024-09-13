@@ -33,11 +33,21 @@ export class PainelDeControle{
                 statusLigado.innerText = "Ligado"
                 statusLigado.id = "statusLigado" + maquina.getNome()+this.getNomePainel();
 
+
+                //criando div para o botao
+                var divLigaDesliga = document.createElement("div")
+                divLigaDesliga.id = "divLabel" + maquina.getNome()+this.getNomePainel();
+                divLigaDesliga.className = "divLabel"
+
                 //criando botao de ligar e desligar com checkbox e label
                 var checkbox = document.createElement("input")
                 checkbox.type="checkbox"
                 checkbox.id = "checkBox" + maquina.getNome()+this.getNomePainel();
                 checkbox.className = "inputLigaDesliga"
+
+                var bola = document.createElement("div")
+                bola.id = "bola" + maquina.getNome()+this.getNomePainel();
+                bola.className = "bola"
 
 
                 var label = document.createElement("label")
@@ -45,6 +55,12 @@ export class PainelDeControle{
                 label.className="labelLigaDesliga"
                 label.id = "label" + maquina.getNome()+this.getNomePainel();
                 label.innerText = "clique aqui"
+
+
+                //adicionando na div label
+                divLigaDesliga.appendChild(label)
+                divLigaDesliga.appendChild(bola)
+
 
                 //mensagem de erro
                 var mensagemErro = document.createElement("h2")
@@ -56,9 +72,11 @@ export class PainelDeControle{
                 divCorreta.appendChild(canvas)
                 divCorreta.appendChild(statusLigado)
                 divCorreta.appendChild(statusDanificado)
-                divCorreta.appendChild(checkbox)
-                divCorreta.appendChild(label)
                 divCorreta.appendChild(mensagemErro)
+                divCorreta.appendChild(divLigaDesliga)
+                divCorreta.appendChild(checkbox)
+
+
 
 
 
