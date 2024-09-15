@@ -2,26 +2,31 @@ import { Maquina } from './Maquina.js'
 import { Memento } from './Memento.js';
 
 export class PainelDeControle{
-    constructor(nomePainel, listaMaquinas){
+    constructor(nomePainel, listaMaquinas, operador){
         this.nomePainel = nomePainel
         this.listaMaquinas = listaMaquinas
         this.listaChart =[]
+        this.operador = operador
 
         listaMaquinas.forEach(maquina =>{
 
             if(maquina instanceof Maquina){
 
+                
+
                 var div = document.createElement("div")
                 div.id = "div"+maquina.getNome()+this.getNomePainel()
                 document.body.appendChild(div)
                 div.className ="divMaquinaComum"
-                console.log(div.class)
                 div.style.backgroundColor="red"
                 var divCorreta = document.getElementById(div.id)
 
                 //criando canvas para o grafico
                 var canvas = document.createElement("canvas")
                 canvas.id = maquina.getNome()+this.getNomePainel()
+
+                var nomeOperador = document.createElement("h1")
+                nomeOperador.innerText = this.operador.getNome();
 
                 //criando status danificado ou nao danificado
                 var statusDanificado = document.createElement("h1");
@@ -69,12 +74,17 @@ export class PainelDeControle{
                 checkbox.addEventListener("click", maquina.mudarMaquinaON.bind(maquina))
 
                 //adicionando todos os itens
+                
+                divCorreta.appendChild(nomeOperador)
+
                 divCorreta.appendChild(canvas)
                 divCorreta.appendChild(statusLigado)
                 divCorreta.appendChild(statusDanificado)
-                divCorreta.appendChild(mensagemErro)
                 divCorreta.appendChild(divLigaDesliga)
                 divCorreta.appendChild(checkbox)
+                document.body.appendChild(mensagemErro)
+
+
 
 
 

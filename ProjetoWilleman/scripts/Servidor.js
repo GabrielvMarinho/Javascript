@@ -69,9 +69,8 @@ export class Servidor{
                             var mensagem = document.getElementById("mensagem"+maquina.getNome()+painel.getNomePainel())
 
                             
-                            if (dado >= 80 ){
-                                mensagem.innerText="DADOS CRITICOS"
-                            
+                            if (dado >= 55 ){
+                                mensagem.innerText=maquina.getNome()+" possui dados criticos "
                             }        
                             
                         })

@@ -94,7 +94,7 @@ export class Maquina {
             this.pressao = parseFloat(this.pressao.toFixed(1));
             return this.pressao
         }
-        this.pressao += Math.round((Math.random() * 2-0.5)*10)/10
+        this.pressao += Math.round((Math.random() * 2-1)*10)/10
         this.pressao = parseFloat(this.pressao.toFixed(1));
         return this.pressao
 

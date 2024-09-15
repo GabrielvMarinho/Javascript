@@ -26,7 +26,7 @@ div{
 .divMaquinaComum{
     margin:2vw;
     border-radius: 2vw;
-    height: 40vw;
+    height: 50vw;
     max-width: 40vw;
 }
 .vermelho{
@@ -52,3 +52,4 @@ canvas{
     padding: 2vw;
 }
 /* terminar de estilizar */
+

@@ -3,6 +3,11 @@ import { Maquina } from './Maquina.js'
 import { PainelDeControle } from './PainelDeControle.js'
 import { Servidor } from './Servidor.js'
 import { Caretaker } from './Caretaker.js'
+import { Operador } from './Operador.js'
+
+//instanciando operador
+const operador1 = new Operador("gabriel", 1500)
+const operador2 = new Operador("bia", 1500)
 
 //criando objeto Caretaker
 const caretaker = new Caretaker("caretaker")
@@ -16,10 +21,12 @@ let listaMaquinas =[new Maquina("MAQUINA 1", "polarArea"),
 //adicionando maquinas ao server
 server.addlistaMaquina(listaMaquinas)
 //criando objeto Painel e criando graficos
-const painel = new PainelDeControle("Painel do gabi", server.getlistaMaquinas())
+const painel = new PainelDeControle("Painel do gabi", server.getlistaMaquinas(), operador1)
+const painel2 = new PainelDeControle("Painel da bia", server.getlistaMaquinas(), operador2)
 // const painel1 = new PainelDeControle("Painel do gabis", server.getlistaMaquinas())
 
 //adiciona paineis ao server
+server.adicionarPainel(painel2)
 server.adicionarPainel(painel)
 // server.adicionarPainel(painel1)
 
