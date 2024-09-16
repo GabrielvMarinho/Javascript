@@ -42,7 +42,6 @@ server.adicionarPainel(painel2)
 function atualizarTemperaturas() {
     //FUNÇÃO OBSERVER -> chama todo os objetos na lista de paineis de server e manda os dados para eles
     server.atualizar()
-    
     //mostra o histórico memento
     server.getCaretaker().save(server.createMemento())
 
