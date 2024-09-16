@@ -71,7 +71,7 @@ export class Servidor{
                                 if(maquina1.getNome()==maquina.getNome()){
                                     var mensagem = document.getElementById("mensagem"+painel.getNomePainel())
                                     var achou = false
-                                    var dadosCriticos = 51
+                                    var dadosCriticos = 80
                                     if (dado >= dadosCriticos ){
                                         var notificacao = document.createElement("h1")
                                         notificacao.className = "mensagemErro"

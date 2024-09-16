@@ -119,9 +119,9 @@ export class Maquina {
         if (this.maquinaON == true){
             var array  = [];
             array.push(this.getTemperatura())
-            // array.push(this.getUmidade())
-            // array.push(this.getPressao())
-            // array.push(this.getVibracao())
+            array.push(this.getUmidade())
+            array.push(this.getPressao())
+            array.push(this.getVibracao())
 
             return array
         } else {

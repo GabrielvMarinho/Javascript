@@ -1,12 +1,10 @@
-import { Funcionario } from './Funcionario.js'
 
 
-export class Operador extends Funcionario{
-    constructor(nome, salario){
-        super(nome),
-        this.salario = salario
+export class Operador{
+    constructor(nome){
+        this.nome = nome
     }
-    getSalario(){
-        return this.salario
+    getNome(){
+        return this.nome
     }
 }

@@ -3,7 +3,6 @@ body{
     flex-direction: column;
     background: linear-gradient(180deg, rgba(30,30,45,1) 0%, rgba(25,30,47,1) 100%);
     height: 100%;
-    gap:2vw;
     color: #d6d6d6;
     font-family: "Inter";
 
@@ -22,7 +21,8 @@ section{
     justify-content: center;
     align-items: center;
     background-color: #5773993f;
-    margin: 3vw;
+    margin-top: 2vw;
+    margin-inline: 3vw;
     border-radius: 4vw;
 
 }
@@ -42,7 +42,7 @@ div{
 .divMaquinaComum{
     margin:1vw;
     border-radius: 2vw;
-    height: 30vw;
+    height: 27vw;
     max-width: 25vw;
 }
 .vermelho{
@@ -61,28 +61,30 @@ div{
     flex-direction: column;
     width: 50vw;
     gap: 2vw;
-    margin: 2vw;
-    margin-bottom: 4vw;
+    margin: 1vw;
+    margin-bottom: 2vw;
     background-color: #57739936;
     border-radius: 1vw;
     padding: 2vw;
 
 }
 h1{
-    font-size: 3vw;
-    margin-top: 2vw;
+    font-size: 2.5vw;
+    margin: 0.5vw;
+
+    margin-top: 1.2vw;
 }
 .msgTitulo{
-    font-size: 2.5vw;
+    font-size: 2vw;
 }
 .mensagemErro{
     background-color: rgb(254, 95, 85);
     height: fit-content;
     width: fit-content;
-    padding: 0.7vw;
+    padding: 0.5vw;
     padding-inline: 3vw;
     border-radius: 0.5vw;
-    font-size: 1.7vw;
+    font-size: 1.5vw;
     color: #ffffff;
     margin: 0;
 }
@@ -121,7 +123,7 @@ h1{
     justify-content: space-between;
     align-items: center;
     position: relative;
-    background-color: #BDD5EA;
+    background-color: rgb(105, 254, 85);
 }
 
 .bolaToggle {
@@ -132,5 +134,5 @@ h1{
     height: 2vw; /* Ajusta a altura */
 }
 .active{
-    background-color: #577399;  
+    background-color: rgb(254, 95, 85);
 }

@@ -192,7 +192,7 @@ export class PainelDeControle{
         var msgTitulo = document.createElement("h1")
         msgTitulo.id = "mensagemTitulo"+this.getNomePainel();
         msgTitulo.className = "msgTitulo"
-        msgTitulo.innerText="CENTRAL DE NOTIFICAÇÕES"
+        msgTitulo.innerText="CENTRAL DE NOTIFICAÇÕES DE "+operador.getNome()
         section.appendChild(msgTitulo)
 
 

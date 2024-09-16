@@ -5,8 +5,8 @@ import { Servidor } from './Servidor.js'
 import { Operador } from './Operador.js'
 
 //instanciando operador
-const operador1 = new Operador("gabriel", 1500)
-const operador2 = new Operador("bia", 1500)
+const operador1 = new Operador("gabriel")
+const operador2 = new Operador("bia")
 
 //criando objeto Caretaker
 // const caretaker = new Caretaker("caretaker")
