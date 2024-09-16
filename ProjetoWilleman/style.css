@@ -43,6 +43,7 @@ div{
     border-radius: 2vw;
     height: 27vw;
     max-width: 25vw;
+    padding-top: 1vw;
 }
 .vermelho{
     background-color: red;

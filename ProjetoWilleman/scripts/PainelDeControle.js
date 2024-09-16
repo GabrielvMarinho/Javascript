@@ -141,12 +141,12 @@ export class PainelDeControle{
                                 'rgba(123, 140, 154, 0.6)' // Purple
                             ],
                             borderColor: [  // Cores da borda das barras
-                                'rgba(189, 213, 234, 1)',
-                                'rgba(247, 247, 255, 1)',
-                                'rgba(112, 138, 173, 1)',
-                                'rgba(123, 140, 154, 1)'
+                                'rgba(189, 213, 234, 0.4)',
+                                'rgba(247, 247, 255, 0.4)',
+                                'rgba(112, 138, 173, 0.4)',
+                                'rgba(123, 140, 154, 0.4)'
                             ],
-                            borderWidth: 2 // Largura da borda
+                            borderWidth: 1 // Largura da borda
                         }],
                         
                     },
