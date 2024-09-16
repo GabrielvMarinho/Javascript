@@ -66,17 +66,30 @@ export class Servidor{
                         
                         //observer
                         this.listaPaineis.forEach(painel =>{
-                            var mensagem = document.getElementById("mensagem"+maquina.getNome()+painel.getNomePainel())
-
+                            var mensagem = document.getElementById("mensagem"+painel.getNomePainel())
+                            var achou = false
                             
-                            if (dado >= 55 ){
-                                mensagem.innerText=maquina.getNome()+" possui dados criticos "
+                            if (dado >= 50 ){
+                                var notificacao = document.createElement("h1")
+                                
+                                Array.from(mensagem.children).forEach(elemento =>{
+                                    if(elemento.innerText.search(maquina.getNome())!==-1){
+                                        achou = true
+                                    }   
+                                    
+                                })
+                                if(!achou){
+                                    notificacao.innerText=maquina.getNome()+" possui dados criticos"
+                                    mensagem.appendChild(notificacao)
+                                }
+                                
+                                
+                                
                             }        
                             
                         })
                         if(dado>=100){
                             maquina.setDanificado()
-                            
                         }
                     
                     

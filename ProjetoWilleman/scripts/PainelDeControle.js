@@ -8,15 +8,31 @@ export class PainelDeControle{
         this.listaChart =[]
         this.operador = operador
 
+        var section = document.createElement("section")
+        section.id = "section"+this.getNomePainel()
+        document.body.appendChild(section)
+
+        var nomeOperador = document.createElement("h1")
+        nomeOperador.innerText = "PAINEL DE "+this.operador.getNome();
+        section.appendChild(nomeOperador)
+
+        var divMaquinas = document.createElement("div")
+        divMaquinas.id = "divMaquinas"+this.getNomePainel()
+        divMaquinas.className ="divMaquinas"
+        section.appendChild(divMaquinas)
+
         listaMaquinas.forEach(maquina =>{
 
             if(maquina instanceof Maquina){
 
                 
+                
 
+                
+                
                 var div = document.createElement("div")
                 div.id = "div"+maquina.getNome()+this.getNomePainel()
-                document.body.appendChild(div)
+                divMaquinas.appendChild(div)
                 div.className ="divMaquinaComum"
                 var divCorreta = document.getElementById(div.id)
 
@@ -24,8 +40,8 @@ export class PainelDeControle{
                 var canvas = document.createElement("canvas")
                 canvas.id = maquina.getNome()+this.getNomePainel()
 
-                var nomeOperador = document.createElement("h1")
-                nomeOperador.innerText = this.operador.getNome();
+                
+
 
                 //criando status danificado ou nao danificado
                 var statusDanificado = document.createElement("h1");
@@ -58,29 +74,37 @@ export class PainelDeControle{
                 label.htmlFor = checkbox.id
                 label.className="labelLigaDesliga" + maquina.getNome()
                 label.id = "label" + maquina.getNome()+this.getNomePainel();
-                label.style.backgroundColor="blue"
-                divBola.style.backgroundColor="red"
-
+                label.classList.add("labelToggle")
+                divBola.classList.add("bolaToggle")
+                divBola.style.transform = 'translateX(120%)'
+                
                 label.appendChild(divBola)
 
                 label.addEventListener("click", mudar)
-
+                
                 function mudar(){
                     if(maquina.getMaquinaOn()==true){
                         var bolas = document.getElementsByClassName("bola" +maquina.getNome())
+                        var label = document.getElementsByClassName("labelLigaDesliga" +maquina.getNome())
+                        console.log(label)
                         for (var i = 0; i < bolas.length; i++) {
                             bolas[i].style.transition = 'transform 0.3s ease, background-color 0.3s ease';
+                            bolas[i].style.transform = 'translateX(0%)';
+                            label[i].classList.add("active")
+                            console.log(label[i])
 
-                            bolas[i].style.transform = 'translateX(100%)';
                         }
                         
                         
                     }
                     else{
+                        var label = document.getElementsByClassName("labelLigaDesliga" +maquina.getNome())
                         var bolas = document.getElementsByClassName("bola" +maquina.getNome())
 
                         for (var i = 0; i < bolas.length; i++) {
-                            bolas[i].style.transform = 'translateX(0%)';
+                            bolas[i].style.transform = 'translateX(120%)';
+                            label[i].classList.remove("active")
+
 
                         }
                         
@@ -90,7 +114,7 @@ export class PainelDeControle{
 
                 //adicionando na div label
                 divLigaDesliga.appendChild(label)
-                document.body.appendChild(divLigaDesliga);
+                section.appendChild(divLigaDesliga);
 
 
 
@@ -98,21 +122,18 @@ export class PainelDeControle{
 
 
                 //mensagem de erro
-                var mensagemErro = document.createElement("h2")
-                mensagemErro.id = "mensagem" + maquina.getNome()+this.getNomePainel();
+                
 
                 checkbox.addEventListener("click", maquina.mudarMaquinaON.bind(maquina))
 
                 //adicionando todos os itens
                 
-                divCorreta.appendChild(nomeOperador)
 
                 divCorreta.appendChild(canvas)
                 divCorreta.appendChild(statusLigado)
                 divCorreta.appendChild(statusDanificado)
                 divCorreta.appendChild(divLigaDesliga)
                 divCorreta.appendChild(checkbox)
-                document.body.appendChild(mensagemErro)
 
 
 
@@ -173,6 +194,10 @@ export class PainelDeControle{
                 console.log("ERRO NÃO É GRÁFICO INSTANCE")
             }
         })
+        var mensagemErro = document.createElement("div")
+        mensagemErro.id = "mensagem"+this.getNomePainel();
+        mensagemErro.className = "mensagemErroDiv"
+        section.appendChild(mensagemErro)
     }
     getNomePainel(){
         return this.nomePainel
@@ -231,15 +256,7 @@ export class PainelDeControle{
 
 
 
-            var mensagem = document.getElementById("mensagem"+maquina.getNome()+this.getNomePainel())
-            var h1 = document.getElementById("statusLigado" + maquina.getNome() + this.getNomePainel())
-            if (!maquina.getMaquinaOn()){
-                h1.innerText = "DESLIGADO"
-                mensagem.innerText =""
-
-            }else{
-                h1.innerText = "LIGADO"
-            }
+            
             
             if (this.listaChart[i]) {
                 this.listaChart[i].data.datasets[0].data = dadosCorresp;

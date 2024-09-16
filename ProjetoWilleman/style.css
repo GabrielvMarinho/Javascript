@@ -1,19 +1,34 @@
 body{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background: linear-gradient(180deg, rgba(30,30,45,1) 0%, rgba(25,30,47,1) 100%);
-    height: 100vh;
+    height: 100%;
+    gap:10vw;
+    color: #d6d6d6;
+    font-family: "Inter";
+
 }
 
 *{
+    font-weight: 400;
+
     padding: 0;
     margin: 0;
 }
 section{
-    height: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #5773993f;
+    margin: 3vw;
+    border-radius: 4vw;
+
+}
+.divMaquinas{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
 }
 div{
     display: flex;
@@ -26,8 +41,8 @@ div{
 .divMaquinaComum{
     margin:2vw;
     border-radius: 2vw;
-    height: 50vw;
-    max-width: 40vw;
+    height: 40vw;
+    max-width: 30vw;
 }
 .vermelho{
     background-color: red;
@@ -36,19 +51,10 @@ div{
     background-color: white;
 }
 .maquinas{
-    color: rgb(121, 121, 250);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 35px
 }
-canvas{
-    max-width: 400px;
-    max-height: 400px;
 
-}
-
-label{
-    padding: 2vw;
-}
 
 /* terminar de estilizar */
 
@@ -73,35 +79,28 @@ label{
     transition: 0.3s;
     background-color: aqua;
 } */
-.bola{
+
+
+.labelToggle {
+    border-radius: 2vw;
+    display: inline-flex;
+    padding: 0.2em;
+    cursor: pointer;
+    width: 4.4vw;
+    height: 2vw;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: #BDD5EA;
+}
+
+.bolaToggle {
     flex-grow: 0;
-    width: 2vw;
-    height: 2vw;
+    background-color: rgb(55, 65, 79) ;
+    border-radius: 50%; /* Garante que a bola fique redonda */
+    width: 2vw; /* Ajusta a largura */
+    height: 2vw; /* Ajusta a altura */
 }
-label{
-    padding: 0;
-    width: 4vw;
-    height: 2vw;
-
+.active{
+    background-color: #577399;  
 }
-
-/* Estilo do pseudo-elemento para o "slider" */
-.labelLigaDesliga::before {
-    content: '';
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 32px;
-    height: 32px;
-    background-color: #4f564f;
-    border-radius: 50%;
-}
- 
-/* Estilo quando o checkbox está marcado */
-/* .labelLigaDesliga:checked + .labelLigaDesliga {
-    background-color: #4caf50; 
-}    */
-
-/* .inputLigaDesliga:checked + .labelLigaDesliga::before {
-    transform: translateX(40px); 
-} */
