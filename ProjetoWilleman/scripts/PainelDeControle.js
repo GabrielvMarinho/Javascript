@@ -18,7 +18,6 @@ export class PainelDeControle{
                 div.id = "div"+maquina.getNome()+this.getNomePainel()
                 document.body.appendChild(div)
                 div.className ="divMaquinaComum"
-                div.style.backgroundColor="red"
                 var divCorreta = document.getElementById(div.id)
 
                 //criando canvas para o grafico
@@ -38,6 +37,7 @@ export class PainelDeControle{
                 statusLigado.innerText = "Ligado"
                 statusLigado.id = "statusLigado" + maquina.getNome()+this.getNomePainel();
 
+                //////
 
                 //criando div para o botao
                 var divLigaDesliga = document.createElement("div")
@@ -48,23 +48,53 @@ export class PainelDeControle{
                 var checkbox = document.createElement("input")
                 checkbox.type="checkbox"
                 checkbox.id = "checkBox" + maquina.getNome()+this.getNomePainel();
-                checkbox.className = "inputLigaDesliga"
+                checkbox.className = "checkbox"
 
-                var bola = document.createElement("div")
-                bola.id = "bola" + maquina.getNome()+this.getNomePainel();
-                bola.className = "bola"
-
-
+              
+                var divBola = document.createElement("div")
+                divBola.className="bola" + maquina.getNome()
+                divBola.classList.add("bola")
                 var label = document.createElement("label")
                 label.htmlFor = checkbox.id
-                label.className="labelLigaDesliga"
+                label.className="labelLigaDesliga" + maquina.getNome()
                 label.id = "label" + maquina.getNome()+this.getNomePainel();
-                label.innerText = "clique aqui"
+                label.style.backgroundColor="blue"
+                divBola.style.backgroundColor="red"
 
+                label.appendChild(divBola)
+
+                label.addEventListener("click", mudar)
+
+                function mudar(){
+                    if(maquina.getMaquinaOn()==true){
+                        var bolas = document.getElementsByClassName("bola" +maquina.getNome())
+                        for (var i = 0; i < bolas.length; i++) {
+                            bolas[i].style.transition = 'transform 0.3s ease, background-color 0.3s ease';
+
+                            bolas[i].style.transform = 'translateX(100%)';
+                        }
+                        
+                        
+                    }
+                    else{
+                        var bolas = document.getElementsByClassName("bola" +maquina.getNome())
+
+                        for (var i = 0; i < bolas.length; i++) {
+                            bolas[i].style.transform = 'translateX(0%)';
+
+                        }
+                        
+
+                    }
+                }
 
                 //adicionando na div label
                 divLigaDesliga.appendChild(label)
-                divLigaDesliga.appendChild(bola)
+                document.body.appendChild(divLigaDesliga);
+
+
+
+                ///////
 
 
                 //mensagem de erro

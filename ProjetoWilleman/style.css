@@ -45,11 +45,63 @@ canvas{
     max-height: 400px;
 
 }
-.labelLigaDesliga{
+
+label{
     padding: 2vw;
 }
-.bola{
-    padding: 2vw;
-}
+
 /* terminar de estilizar */
 
+/* Estilo para o contêiner do botão de alternância */
+.divLabel {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Oculta o checkbox */
+.checkbox {
+    display: none;
+}
+
+/* Estilo do label que age como o botão de alternância */
+/* .labelLigaDesliga {
+    width: 80px;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: aqua;
+} */
+.bola{
+    flex-grow: 0;
+    width: 2vw;
+    height: 2vw;
+}
+label{
+    padding: 0;
+    width: 4vw;
+    height: 2vw;
+
+}
+
+/* Estilo do pseudo-elemento para o "slider" */
+.labelLigaDesliga::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 32px;
+    height: 32px;
+    background-color: #4f564f;
+    border-radius: 50%;
+}
+ 
+/* Estilo quando o checkbox está marcado */
+/* .labelLigaDesliga:checked + .labelLigaDesliga {
+    background-color: #4caf50; 
+}    */
+
+/* .inputLigaDesliga:checked + .labelLigaDesliga::before {
+    transform: translateX(40px); 
+} */
