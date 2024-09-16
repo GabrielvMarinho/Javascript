@@ -3,7 +3,7 @@ body{
     flex-direction: column;
     background: linear-gradient(180deg, rgba(30,30,45,1) 0%, rgba(25,30,47,1) 100%);
     height: 100%;
-    gap:10vw;
+    gap:2vw;
     color: #d6d6d6;
     font-family: "Inter";
 
@@ -27,6 +27,7 @@ section{
 
 }
 .divMaquinas{
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
 }
@@ -39,10 +40,10 @@ div{
 }
 
 .divMaquinaComum{
-    margin:2vw;
+    margin:1vw;
     border-radius: 2vw;
-    height: 40vw;
-    max-width: 30vw;
+    height: 30vw;
+    max-width: 25vw;
 }
 .vermelho{
     background-color: red;
@@ -50,12 +51,41 @@ div{
 .branco{
     background-color: white;
 }
+
 .maquinas{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 35px
+    font-size: 35px;
 }
+.mensagemErroDiv{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    gap: 2vw;
+    margin: 2vw;
+    margin-bottom: 4vw;
+    background-color: #57739936;
+    border-radius: 1vw;
+    padding: 2vw;
 
-
+}
+h1{
+    font-size: 3vw;
+    margin-top: 2vw;
+}
+.msgTitulo{
+    font-size: 2.5vw;
+}
+.mensagemErro{
+    background-color: rgb(254, 95, 85);
+    height: fit-content;
+    width: fit-content;
+    padding: 0.7vw;
+    padding-inline: 3vw;
+    border-radius: 0.5vw;
+    font-size: 1.7vw;
+    color: #ffffff;
+    margin: 0;
+}
 /* terminar de estilizar */
 
 /* Estilo para o contêiner do botão de alternância */

@@ -1,13 +1,14 @@
 import { Maquina } from "./Maquina.js"
 import { PainelDeControle } from "./PainelDeControle.js"
 import { Memento } from "./Memento.js"
+import { Caretaker } from "./Caretaker.js"
 
 export class Servidor{
     constructor(nome){
         this.nome = nome
         this.listaPaineis = []
         this.listaMaquinas = []
-        
+        this.caretaker = new Caretaker()
     }
     addlistaMaquina(lista){
         let existe=false;
@@ -66,31 +67,54 @@ export class Servidor{
                         
                         //observer
                         this.listaPaineis.forEach(painel =>{
-                            var mensagem = document.getElementById("mensagem"+painel.getNomePainel())
-                            var achou = false
-                            
-                            if (dado >= 50 ){
-                                var notificacao = document.createElement("h1")
-                                
-                                Array.from(mensagem.children).forEach(elemento =>{
-                                    if(elemento.innerText.search(maquina.getNome())!==-1){
-                                        achou = true
-                                    }   
+                            painel.getListaMaquinas().forEach(maquina1=>{
+                                if(maquina1.getNome()==maquina.getNome()){
+                                    var mensagem = document.getElementById("mensagem"+painel.getNomePainel())
+                                    var achou = false
+                                    var dadosCriticos = 51
+                                    if (dado >= dadosCriticos ){
+                                        var notificacao = document.createElement("h1")
+                                        notificacao.className = "mensagemErro"
+                                        Array.from(mensagem.children).forEach(elemento =>{
+                                            if(elemento.innerText.search(maquina.getNome())!==-1){
+                                                achou = true
+                                            }   
+                                            
+                                        })
+                                        if(!achou){
+                                            notificacao.innerText=maquina.getNome()+" possui dados criticos!"
+                                            mensagem.appendChild(notificacao)
+                                        }
+                                        
+                                        var hist = false
+                                        this.caretaker.getAll().forEach(elemento=>{
+                                            elemento.estado.forEach(dado=>{
+                                                for(var i=1; i<dado.length;i++){
+                                                    if(dado[i]>=dadosCriticos){
+                                                        if(dado[0]==maquina.getNome()){
+                                                            hist = true
+
+                                                        }
+                                                    }
+                                                }
+                                            })
+                                        })
+                                        if(hist ==false){
+                                            notificacao.innerText=maquina.getNome()+" possui dados criticos!"
+                                            mensagem.appendChild(notificacao)
+                                        }
+                                        
+                                        
+                                        
+                                    }    
+                                }    
                                     
                                 })
-                                if(!achou){
-                                    notificacao.innerText=maquina.getNome()+" possui dados criticos"
-                                    mensagem.appendChild(notificacao)
+                                if(dado>=100){
+                                    maquina.setDanificado()
                                 }
-                                
-                                
-                                
-                            }        
+                            })
                             
-                        })
-                        if(dado>=100){
-                            maquina.setDanificado()
-                        }
                     
                     
                 
@@ -109,7 +133,9 @@ export class Servidor{
     }
     createMemento(){
         return new Memento(this.matriz)
-        
+    }
+    getCaretaker(){
+        return this.caretaker
     }
     metodoObserver(matriz){
         this.listaPaineis.forEach(painel =>{

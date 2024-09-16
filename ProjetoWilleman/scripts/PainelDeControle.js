@@ -44,15 +44,8 @@ export class PainelDeControle{
 
 
                 //criando status danificado ou nao danificado
-                var statusDanificado = document.createElement("h1");
-                statusDanificado.innerText = "Não danificado"
-                statusDanificado.id = "statusDanificado" + maquina.getNome()+this.getNomePainel();
 
-                //criando status ligado ou desligado
-                var statusLigado = document.createElement("h1");
-                statusLigado.innerText = "Ligado"
-                statusLigado.id = "statusLigado" + maquina.getNome()+this.getNomePainel();
-
+                
                 //////
 
                 //criando div para o botao
@@ -86,12 +79,10 @@ export class PainelDeControle{
                     if(maquina.getMaquinaOn()==true){
                         var bolas = document.getElementsByClassName("bola" +maquina.getNome())
                         var label = document.getElementsByClassName("labelLigaDesliga" +maquina.getNome())
-                        console.log(label)
                         for (var i = 0; i < bolas.length; i++) {
                             bolas[i].style.transition = 'transform 0.3s ease, background-color 0.3s ease';
                             bolas[i].style.transform = 'translateX(0%)';
                             label[i].classList.add("active")
-                            console.log(label[i])
 
                         }
                         
@@ -130,8 +121,6 @@ export class PainelDeControle{
                 
 
                 divCorreta.appendChild(canvas)
-                divCorreta.appendChild(statusLigado)
-                divCorreta.appendChild(statusDanificado)
                 divCorreta.appendChild(divLigaDesliga)
                 divCorreta.appendChild(checkbox)
 
@@ -146,18 +135,18 @@ export class PainelDeControle{
                     data: {
                         datasets: [{
                             backgroundColor: [  // Cores de fundo das barras
-                                'rgba(255, 99, 132, 0.6)', // Red
-                                'rgba(255, 206, 86, 0.6)', // Yellow
-                                'rgba(75, 192, 192, 0.6)', // Green
-                                'rgba(153, 102, 255, 0.6)' // Purple
+                                'rgba(189, 213, 234, 0.6)', // Red
+                                'rgba(247, 247, 255, 0.6)', // Yellow
+                                'rgba(112, 138, 173, 0.6)', // Green
+                                'rgba(123, 140, 154, 0.6)' // Purple
                             ],
                             borderColor: [  // Cores da borda das barras
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)'
+                                'rgba(189, 213, 234, 1)',
+                                'rgba(247, 247, 255, 1)',
+                                'rgba(112, 138, 173, 1)',
+                                'rgba(123, 140, 154, 1)'
                             ],
-                            borderWidth: 1 // Largura da borda
+                            borderWidth: 2 // Largura da borda
                         }],
                         
                     },
@@ -171,8 +160,14 @@ export class PainelDeControle{
                         plugins: {
                             title:{
                                 display:true,
-                                text:maquina.getNome()
+                                text:maquina.getNome(),
+                                color:"#fff",
+                                font:{
+                                    weight:'100'
+    
+                                }
                             },
+                            
                             tooltip: {
                                 callbacks: {
                                     label: function(tooltipItem) {
@@ -194,6 +189,13 @@ export class PainelDeControle{
                 console.log("ERRO NÃO É GRÁFICO INSTANCE")
             }
         })
+        var msgTitulo = document.createElement("h1")
+        msgTitulo.id = "mensagemTitulo"+this.getNomePainel();
+        msgTitulo.className = "msgTitulo"
+        msgTitulo.innerText="CENTRAL DE NOTIFICAÇÕES"
+        section.appendChild(msgTitulo)
+
+
         var mensagemErro = document.createElement("div")
         mensagemErro.id = "mensagem"+this.getNomePainel();
         mensagemErro.className = "mensagemErroDiv"
@@ -206,7 +208,6 @@ export class PainelDeControle{
         var i=0;
         var array=[];
         //o for ta baseado no tamanho da lista de maquinas mas deve ser baseado no tamanho da lista de dado
-
         this.listaMaquinas.forEach( maquina =>{
 
             const dadosCorresp = dados.find(dado =>dado[0] === maquina.getNome())
@@ -220,13 +221,8 @@ export class PainelDeControle{
                 }
             }
 
-            var h1 = document.getElementById("statusDanificado" + maquina.getNome() + this.getNomePainel())
 
-            if (maquina.getDanificado()){
-                h1.innerText = "DANIFICADO"
-
-            } 
-            var div = document.getElementById("div"+maquina.getNome()+this.getNomePainel())
+           
 
             const startColor = [55, 65, 79];
             const endColor = [254, 95, 85]; 
@@ -235,6 +231,7 @@ export class PainelDeControle{
             const percentage = (maiorvalor-60)*2.5/100;
 
             
+            var div = document.getElementById("div"+maquina.getNome()+this.getNomePainel())
 
             
             // const só fica dentro do if
@@ -245,12 +242,10 @@ export class PainelDeControle{
 
             }
             else{
-                console.log("entrou")
                 var r = Math.round(startColor[0] + (endColor[0] - startColor[0]) * percentage);
                 var g = Math.round(startColor[1] + (endColor[1] - startColor[1]) * percentage);
                 var b = Math.round(startColor[2] + (endColor[2] - startColor[2]) * percentage);
             }
-
             div.style.backgroundColor =`rgb(${r}, ${g}, ${b})`
 
 

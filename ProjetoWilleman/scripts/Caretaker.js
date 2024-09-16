@@ -3,6 +3,7 @@ export class Caretaker{
         this.nome = nome
         this.listaMementos = []
     }
+    
     save(memento){
         if(this.listaMementos.length>=15){
             this.listaMementos.shift()
@@ -13,13 +14,18 @@ export class Caretaker{
         }
     }
     getListaMementos(){
+        console.clear()
         var string = ""
         this.listaMementos.forEach(elemento =>{
             string+=elemento.getEstado()+"\n\n"
         })
         return string
     }
+    
     getIndex(id){
         return this.listaMementos[id]
+    }
+    getAll(){
+        return this.listaMementos
     }
 }
