@@ -45,7 +45,7 @@ function atualizarTemperaturas() {
     //mostra o histórico memento
     server.getCaretaker().save(server.createMemento())
 
-    console.log(server.getCaretaker().getListaMementos())
+    // console.log(server.getCaretaker().getListaMementos())
 }
 
 //função que chama o atualizarTemperaturas com um delay

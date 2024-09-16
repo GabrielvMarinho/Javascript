@@ -111,7 +111,18 @@ export class Servidor{
                                     
                                 })
                                 if(dado>=100){
+                                    var div = document.getElementsByClassName("divMaquinaComum"+maquina.getNome().replace(" ", ""))
+                                    var label = document.getElementsByClassName("labelLigaDesliga" +maquina.getNome())
+
+                                    for(var i=0; i<div.length;i++){
+                                        div[i].classList.add("danificado")
+                                        label[i].style.display="none"
+                                        console.log(div[i].classList)
+
+                                    }
+                                    //continuar a logica de estragado
                                     maquina.setDanificado()
+
                                 }
                             })
                             

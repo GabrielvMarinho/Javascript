@@ -63,7 +63,7 @@ export class Maquina {
             this.temperatura = parseFloat(this.pressao.toFixed(1));
             return this.temperatura
         }
-        this.temperatura += Math.round((Math.random() * 2-1)*10)/10
+        this.temperatura += Math.round((Math.random() * 2)*10)/10
         this.temperatura = parseFloat(this.temperatura.toFixed(1));
         return this.temperatura
     }

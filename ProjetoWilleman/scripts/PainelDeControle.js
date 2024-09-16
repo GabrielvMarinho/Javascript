@@ -10,6 +10,7 @@ export class PainelDeControle{
 
         var section = document.createElement("section")
         section.id = "section"+this.getNomePainel()
+        section.className = "section"
         document.body.appendChild(section)
 
         var nomeOperador = document.createElement("h1")
@@ -34,6 +35,8 @@ export class PainelDeControle{
                 div.id = "div"+maquina.getNome()+this.getNomePainel()
                 divMaquinas.appendChild(div)
                 div.className ="divMaquinaComum"
+                
+                div.classList.add("divMaquinaComum"+maquina.getNome().replace(" ", ""))
                 var divCorreta = document.getElementById(div.id)
 
                 //criando canvas para o grafico
@@ -78,8 +81,11 @@ export class PainelDeControle{
                 function mudar(){
                     if(maquina.getMaquinaOn()==true){
                         var bolas = document.getElementsByClassName("bola" +maquina.getNome())
+                        var div = document.getElementsByClassName("divMaquinaComum"+maquina.getNome().replace(" ", ""))
                         var label = document.getElementsByClassName("labelLigaDesliga" +maquina.getNome())
+                        
                         for (var i = 0; i < bolas.length; i++) {
+                            div[i].classList.add("opacidade")
                             bolas[i].style.transition = 'transform 0.3s ease, background-color 0.3s ease';
                             bolas[i].style.transform = 'translateX(0%)';
                             label[i].classList.add("active")
@@ -89,10 +95,12 @@ export class PainelDeControle{
                         
                     }
                     else{
+                        var div = document.getElementsByClassName("divMaquinaComum"+maquina.getNome().replace(" ", ""))
                         var label = document.getElementsByClassName("labelLigaDesliga" +maquina.getNome())
                         var bolas = document.getElementsByClassName("bola" +maquina.getNome())
-
                         for (var i = 0; i < bolas.length; i++) {
+                            div[i].classList.remove('opacidade')
+                            console.log(label[i].classList)
                             bolas[i].style.transform = 'translateX(120%)';
                             label[i].classList.remove("active")
 
