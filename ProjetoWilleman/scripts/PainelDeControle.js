@@ -129,6 +129,7 @@ export class PainelDeControle{
                 
 
                 divCorreta.appendChild(canvas)
+                
                 divCorreta.appendChild(divLigaDesliga)
                 divCorreta.appendChild(checkbox)
 
@@ -139,6 +140,7 @@ export class PainelDeControle{
 
 
                 this.listaChart.push( new Chart(canvas.id, {
+                    
                     type: this.listaMaquinas[this.listaMaquinas.length-1].getTipo(),
                     data: {
                         datasets: [{
@@ -159,6 +161,7 @@ export class PainelDeControle{
                         
                     },
                     options: {
+
                         scales: {
                             r: {
                                 beginAtZero:true,
