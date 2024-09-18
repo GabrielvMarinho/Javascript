@@ -8,9 +8,7 @@ import { Operador } from './Operador.js'
 const operador1 = new Operador("gabriel")
 const operador2 = new Operador("bia")
 
-//criando objeto Caretaker
-// const caretaker = new Caretaker("caretaker")
-//criando objeto Server
+//instanciando server
 const server = new Servidor("server")
 
 //lista de maquinas temporárias
@@ -21,7 +19,6 @@ let listaMaquinas =[new Maquina("MAQUINA 1", "polarArea"),
                     new Maquina("MAQUINA 5", "polarArea"),
                     new Maquina("MAQUINA 6", "polarArea")];
 
-                    
 //adicionando maquinas ao server
 server.addlistaMaquina(listaMaquinas)
 
@@ -30,7 +27,7 @@ server.addlistaMaquina(listaMaquinas)
 var lista = [server.getMaquinaIndex(0),server.getMaquinaIndex(1),server.getMaquinaIndex(2)]
 const painel = new PainelDeControle("Painel do gabi", lista, operador1)
 
-var lista = [server.getMaquinaIndex(3),server.getMaquinaIndex(4),server.getMaquinaIndex(5)]
+var lista = [server.getMaquinaIndex(3),server.getMaquinaIndex(2),server.getMaquinaIndex(5)]
 const painel2 = new PainelDeControle("Painel da bia", lista, operador2)
 // const painel1 = new PainelDeControle("Painel do gabis", server.getlistaMaquinas())
 
@@ -44,8 +41,7 @@ function atualizarTemperaturas() {
     server.atualizar()
     //mostra o histórico memento
     server.getCaretaker().save(server.createMemento())
-
-    // console.log(server.getCaretaker().getListaMementos())
+    console.log(server.getCaretaker().getListaMementos())
 }
 
 //função que chama o atualizarTemperaturas com um delay

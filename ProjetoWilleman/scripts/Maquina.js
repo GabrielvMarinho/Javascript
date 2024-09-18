@@ -38,32 +38,29 @@ export class Maquina {
                 this.maquinaON = true;
             }
     }
-    else{
-        alert("impossivel ligar, esta estragada")
-
-    }
         
     }
 
-    
-
+    getRandomPosi(){
+        return Math.round((Math.random() * 2)*10)/10;
+    }
+    getRandom(){
+        return Math.round((Math.random() * 2)*10)/10;
+    }
     getNome(){
-
         return this.nome
     }
     getTemperatura(){
-        
-
         if(this.temperatura>=100){
             this.temperatura=100
             return this.temperatura
         }
         else if(this.temperatura<=0){
-            this.temperatura += Math.round((Math.random() * 2)*10)/10
+            this.temperatura += this.getRandomPosi()
             this.temperatura = parseFloat(this.pressao.toFixed(1));
             return this.temperatura
         }
-        this.temperatura += Math.round((Math.random() * 2-1)*10)/10
+        this.temperatura += this.getRandom()
         this.temperatura = parseFloat(this.temperatura.toFixed(1));
         return this.temperatura
     }
@@ -74,11 +71,11 @@ export class Maquina {
             return this.umidade
         }
         else if(this.umidade<=0){
-            this.umidade += Math.round((Math.random() * 2)*10)/10
+            this.umidade += this.getRandomPosi()
             this.umidade = parseFloat(this.umidade.toFixed(1));
             return this.umidade
         }
-        this.umidade += Math.round((Math.random() * 2-1)*10)/10
+        this.umidade += this.getRandom()
         this.umidade = parseFloat(this.umidade.toFixed(1));
         return this.umidade
     }
@@ -90,11 +87,11 @@ export class Maquina {
             return this.pressao
         }
         else if(this.pressao<=0){
-            this.pressao += Math.round((Math.random() * 2)*10)/10
+            this.pressao += this.getRandomPosi()
             this.pressao = parseFloat(this.pressao.toFixed(1));
             return this.pressao
         }
-        this.pressao += Math.round((Math.random() * 2-1)*10)/10
+        this.pressao += this.getRandom()
         this.pressao = parseFloat(this.pressao.toFixed(1));
         return this.pressao
 
@@ -106,11 +103,11 @@ export class Maquina {
             return this.vibracao
         }
         else if(this.vibracao<=0){
-            this.vibracao += Math.round((Math.random() * 2)*10)/10
+            this.vibracao += this.getRandomPosi()
             this.vibracao = parseFloat(this.vibracao.toFixed(1));
             return this.vibracao
         }
-        this.vibracao += Math.round((Math.random() * 2-1)*10)/10
+        this.vibracao += this.getRandom()
         this.vibracao = parseFloat(this.vibracao.toFixed(1));
         return this.vibracao
     }
