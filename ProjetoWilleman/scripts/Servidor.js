@@ -56,22 +56,31 @@ export class Servidor{
         
     }
     atualizar(){
-        var i =0;
+        let i =0;
         var matriz=[]
+        //entrar em cada maquina da lista de maquinas
         this.listaMaquinas.forEach(maquina => {
+
             matriz[i] = []
+            //se for uma maquina valida ele vai pegar todos os dados atualizados da máquina
             if (maquina && typeof maquina.getTemperatura === 'function') {
                 matriz[i].push(this.listaMaquinas[i].getNome())
-                maquina.getAll().forEach( dado =>{
 
-                        
-                        //observer
+                var [legenda, dados] = maquina.getAll();
+                
+                dados.forEach((dado, index) =>{
+
+
+                        //metodo observer que vai passar pela lista de paineis e mandar notificações de erro ( é feito
+                        // antes mesmo de mandar os dados para o painel ou terminar de alimentar a matriz de dados )
                         this.listaPaineis.forEach(painel =>{
                             painel.getListaMaquinas().forEach(maquina1=>{
                                 if(maquina1.getNome()==maquina.getNome()){
                                     var mensagem = document.getElementById("mensagem"+painel.getNomePainel())
+
                                     var achou = false
                                     var dadosCriticos = 80
+
                                     if (dado >= dadosCriticos ){
                                         var notificacao = document.createElement("h1")
                                         notificacao.className = "mensagemErro"
@@ -81,30 +90,30 @@ export class Servidor{
                                             }   
                                             
                                         })
-                                        if(!achou){
-                                            notificacao.innerText=maquina.getNome()+" possui dados criticos!"
-                                            mensagem.appendChild(notificacao)
-                                        }
-                                        
+
                                         var hist = false
+                                        
+
                                         this.caretaker.getAll().forEach(elemento=>{
+
                                             elemento.estado.forEach(dado=>{
                                                 for(var i=1; i<dado.length;i++){
                                                     if(dado[i]>=dadosCriticos){
                                                         if(dado[0]==maquina.getNome()){
+                                                            
                                                             hist = true
-
                                                         }
                                                     }
+
                                                 }
                                             })
                                         })
-                                        if(hist ==false){
-                                            notificacao.innerText=maquina.getNome()+" possui dados criticos!"
+
+                                        if(!hist || !achou){
+                                            //notificação personalizada baseada na legenda da máquina
+                                            notificacao.innerText=`${maquina.getNome()} possui ${legenda[index]} crítica!`
                                             mensagem.appendChild(notificacao)
                                         }
-                                        
-                                        
                                         
                                     }    
                                 }    
@@ -120,7 +129,7 @@ export class Servidor{
                                         console.log(div[i].classList)
 
                                     }
-                                    //continuar a logica de estragado
+                                    //define a maquina como danificada
                                     maquina.setDanificado()
 
                                 }
@@ -129,7 +138,7 @@ export class Servidor{
                     
                     
                 
-                    
+                    //alimenta matriz para dados serem enviados
                     matriz[i].push(dado)
                 })
                 
@@ -138,9 +147,12 @@ export class Servidor{
             }
             i +=1
         });
-        
-        this.metodoObserver(matriz)
+        //adiciona um atributo matriz para salvar o estado da máquina e facilitar criação do memento
         this.matriz = matriz
+        
+        //chama metodo observer que vai notificar dos novos dados e atualizar os graficos
+        this.metodoObserver()
+        
     }
     createMemento(){
         return new Memento(this.matriz)
@@ -148,9 +160,10 @@ export class Servidor{
     getCaretaker(){
         return this.caretaker
     }
-    metodoObserver(matriz){
+    metodoObserver(){
+        //passa por todos os paineis e manda a matriz de dados 
         this.listaPaineis.forEach(painel =>{
-            painel.receberDados(matriz);
+            painel.receberDados(this.matriz);
         });
     }
 

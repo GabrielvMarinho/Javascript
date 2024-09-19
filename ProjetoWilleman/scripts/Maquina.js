@@ -2,10 +2,10 @@
 export class Maquina {
     constructor(nome, tipoGrafico) {
         this.nome = nome;
-        this.temperatura=50;// graus celcius 
-        this.umidade=50;// percentual ->>>>>>>>>>>>>>>>>>>>>>>todos em porcentagem de 0% sendo seguro e 100% sendo crítico
-        this.pressao=50;// milimetros por segundo 
-        this.vibracao=50;// bar 
+        this.temperatura=77;// graus celcius 
+        this.umidade=77;// percentual ->>>>> todos em porcentagem de 0% sendo seguro e 100% sendo crítico
+        this.pressao=77;// milimetros por segundo 
+        this.vibracao=77;// bar 
         this.tipoGrafico = tipoGrafico;
         this.legenda = ["TEMPERATURA", "UMIDADE", "PRESSÃO", "VIBRAÇÃO"];
         this.maquinaON = true;
@@ -41,11 +41,11 @@ export class Maquina {
         
     }
 
-    getRandomPosi(){
+    getRandomPosi(){//sem o menos um (-1)
         return Math.round((Math.random() * 2)*10)/10;
     }
     getRandom(){
-        return Math.round((Math.random() * 2)*10)/10;
+        return Math.round((Math.random() * 2-1)*10)/10;
     }
     getNome(){
         return this.nome
@@ -119,10 +119,10 @@ export class Maquina {
             array.push(this.getUmidade())
             array.push(this.getPressao())
             array.push(this.getVibracao())
-
-            return array
+            return [this.legenda, array]
         } else {
-            return [0,0,0,0];
+            
+            return [this.legenda, [0,0,0,0]];
         }
     }
     getLegenda(){
