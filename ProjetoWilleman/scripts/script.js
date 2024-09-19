@@ -47,7 +47,7 @@ function atualizarTemperaturas() {
     server.atualizar()
     // mostra o histórico memento e salva, muito importante para não ter spans nas mensagens de erro
     server.getCaretaker().save(server.createMemento())
-    // console.log(server.getCaretaker().getListaMementos())
+    console.log(server.getCaretaker().getListaMementos())
 }
 
 //função que chama o atualizarTemperaturas com um delay

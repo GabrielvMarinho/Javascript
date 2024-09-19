@@ -92,13 +92,11 @@ export class PainelDeControle{
                         var div = document.getElementsByClassName("divMaquinaComum"+maquina.getNome().replace(" ", ""))
                         var label = document.getElementsByClassName("labelLigaDesliga" +maquina.getNome())
                         var bolas = document.getElementsByClassName("bola" +maquina.getNome())
+
                         for (var i = 0; i < bolas.length; i++) {
                             div[i].classList.remove('opacidade')
-                            console.log(label[i].classList)
                             bolas[i].style.transform = 'translateX(120%)';
                             label[i].classList.remove("active")
-
-
                         }
                         
 
