@@ -117,12 +117,16 @@ export class PainelDeControle{
                 divCorreta.appendChild(checkbox)
 
 
-
+                var [legenda, dados] = maquina.getAll()
+                console.log(legenda)
                 //cria e adiciona um chart.js
                 this.listaChart.push( new Chart(canvas.id, {
                     
                     type: this.listaMaquinas[index].getTipo(),
-                    data: {
+                    
+                    data:
+                    {
+                        labels:(this.listaMaquinas[index].getTipo() === 'polarArea') ? undefined : [legenda[-1], legenda[0], legenda[1], legenda[2], legenda[3]], 
                         datasets: [{
                             backgroundColor: [  // Cores de fundo das barras
                                 'rgba(189, 213, 234, 0.6)', // Red
@@ -141,14 +145,31 @@ export class PainelDeControle{
                         
                     },
                     options: {
-
-                        scales: {
+                        
+                        scales: (this.listaMaquinas[index].getTipo()==="polarArea")?{
                             r: {
                                 beginAtZero:true,
-                                max:100
-                            }},
+                                max:100,
+                                pointLabels: {
+                                    color: 'white' // Cor dos rótulos dos eixos (como "Vibração", "Temperatura")
+                                },
+                            }
+                            }:{
+                                x: {
+                                    beginAtZero: true
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100
+                                }
+                            },
                         responsive: true,
                         plugins: {
+                            legend: {
+                                labels: {
+                                    color: 'white' // Define a cor da legenda
+                                }
+                            },
                             title:{
                                 display:true,
                                 text:maquina.getNome(),

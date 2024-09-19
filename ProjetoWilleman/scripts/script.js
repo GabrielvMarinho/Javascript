@@ -12,7 +12,7 @@ const operador3 = new Operador("fulano")
 //instanciando server
 const server = new Servidor("server")
 
-//lista de maquinas temporárias
+//lista de maquinas temporárias //bar, line, radar, doughnut, area
 let listaMaquinas =[new Maquina("MAQUINA 1", "polarArea"),
                     new Maquina("MAQUINA 2", "polarArea"),
                     new Maquina("MAQUINA 3", "polarArea"),
@@ -44,7 +44,7 @@ function atualizarDados() {
     server.atualizar()
     // mostra o histórico memento e salva, muito importante para não ter spans nas mensagens de erro
     server.getCaretaker().save(server.createMemento())
-    console.log(server.getCaretaker().getListaMementos())
+    // console.log(server.getCaretaker().getListaMementos())
 }
 
 //função que chama o atualizarDados com um delay

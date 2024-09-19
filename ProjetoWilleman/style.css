@@ -35,15 +35,20 @@ div{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-grow: 1;
 }
-
+.marginTop{
+    margin-top: 5vw;
+}
 .divMaquinaComum{
     margin:1vw;
     border-radius: 2vw;
     height: 30vw;
     width: 25vw;
     padding-top: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    gap: 1vw;
 }
 .vermelho{
     background-color: red;
@@ -104,6 +109,7 @@ h1{
     display: inline-flex;
     align-items: center;
     position: relative;
+    max-height: fit-content;
 }
 
 /* Oculta o checkbox */
