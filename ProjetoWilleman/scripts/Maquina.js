@@ -4,7 +4,7 @@ export class Maquina {
         this.nome = nome;
         this.temperatura=50;
         this.umidade=50;// percentual ->>>>> todos em porcentagem de 0% sendo seguro e 100% sendo crítico
-        this.pressao=99;
+        this.pressao=50;
         this.vibracao=50;
         this.tipoGrafico = tipoGrafico;
         this.legenda = ["TEMPERATURA", "UMIDADE", "PRESSÃO", "VIBRAÇÃO"];

@@ -25,7 +25,7 @@ export class PainelDeControle{
         divMaquinas.className ="divMaquinas"
         section.appendChild(divMaquinas)
 
-        listaMaquinas.forEach(maquina =>{
+        listaMaquinas.forEach((maquina, index) =>{
 
             if(maquina instanceof Maquina){
 
@@ -121,7 +121,7 @@ export class PainelDeControle{
                 //cria e adiciona um chart.js
                 this.listaChart.push( new Chart(canvas.id, {
                     
-                    type: this.listaMaquinas[this.listaMaquinas.length-1].getTipo(),
+                    type: this.listaMaquinas[index].getTipo(),
                     data: {
                         datasets: [{
                             backgroundColor: [  // Cores de fundo das barras
