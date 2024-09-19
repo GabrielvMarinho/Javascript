@@ -7,6 +7,7 @@ import { Operador } from './Operador.js'
 //instanciando operador
 const operador1 = new Operador("gabriel")
 const operador2 = new Operador("bia")
+const operador3 = new Operador("fulano")
 
 //instanciando server
 const server = new Servidor("server")
@@ -25,15 +26,20 @@ server.addlistaMaquina(listaMaquinas)
 //criando objeto Painel e criando graficos
 
 var lista = [server.getMaquinaIndex(0),server.getMaquinaIndex(1),server.getMaquinaIndex(2)]
-const painel = new PainelDeControle("Painel do gabi", lista, operador1)
+const painel = new PainelDeControle(operador1.getNome(), lista, operador1)
 
 var lista = [server.getMaquinaIndex(3),server.getMaquinaIndex(2),server.getMaquinaIndex(5)]
-const painel2 = new PainelDeControle("Painel da bia", lista, operador2)
+const painel2 = new PainelDeControle(operador2.getNome(), lista, operador2)
+
+var lista = [server.getMaquinaIndex(4)]
+const painel3 = new PainelDeControle(operador3.getNome(), lista, operador3)
 // const painel1 = new PainelDeControle("Painel do gabis", server.getlistaMaquinas())
 
 //adiciona paineis ao server
 server.adicionarPainel(painel)
 server.adicionarPainel(painel2)
+server.adicionarPainel(painel3)
+
 // server.adicionarPainel(painel1)
 
 function atualizarTemperaturas() {

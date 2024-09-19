@@ -3,7 +3,7 @@ import { Maquina } from './Maquina.js'
 
 export class PainelDeControle{
     constructor(nomePainel, listaMaquinas, operador){
-        this.nomePainel = nomePainel
+        this.nomePainel = "Painel do "+nomePainel
         this.listaMaquinas = listaMaquinas
         this.listaChart =[]
         this.operador = operador
