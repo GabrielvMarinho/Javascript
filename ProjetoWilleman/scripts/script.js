@@ -40,7 +40,7 @@ function atualizarTemperaturas() {
     //FUNÇÃO OBSERVER -> chama todo os objetos na lista de paineis de server e manda os dados para eles
     server.atualizar()
     // mostra o histórico memento e salva, muito importante para não ter spans nas mensagens de erro
-    // server.getCaretaker().save(server.createMemento())
+    server.getCaretaker().save(server.createMemento())
     // console.log(server.getCaretaker().getListaMementos())
 }
 

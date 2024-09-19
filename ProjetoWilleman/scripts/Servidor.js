@@ -80,6 +80,7 @@ export class Servidor{
 
                                     var achou = false
                                     var dadosCriticos = 80
+                                    var hist = false
 
                                     if (dado >= dadosCriticos ){
                                         var notificacao = document.createElement("h1")
@@ -91,16 +92,13 @@ export class Servidor{
                                             
                                         })
 
-                                        var hist = false
                                         
-
+                                        
                                         this.caretaker.getAll().forEach(elemento=>{
-
                                             elemento.estado.forEach(dado=>{
                                                 for(var i=1; i<dado.length;i++){
                                                     if(dado[i]>=dadosCriticos){
                                                         if(dado[0]==maquina.getNome()){
-                                                            
                                                             hist = true
                                                         }
                                                     }
@@ -116,23 +114,30 @@ export class Servidor{
                                         }
                                         
                                     }    
+                                    if(dado>=100){
+                                        var div = document.getElementsByClassName("divMaquinaComum"+maquina.getNome().replace(" ", ""))
+                                        var label = document.getElementsByClassName("labelLigaDesliga" +maquina.getNome())
+    
+                                        for(var i=0; i<div.length;i++){
+                                            div[i].classList.add("danificado")
+                                            label[i].style.display="none"
+                                            console.log(div[i].classList)
+    
+                                        }
+                                        var mensagem = document.getElementById("mensagem"+painel.getNomePainel())
+    
+                                        var notificacao = document.createElement("h1")
+                                        notificacao.className = "mensagemErro"
+                                        notificacao.innerText=`${maquina.getNome()} possui um DEFEITO OPERACIONAL GRAVE!`
+                                        mensagem.appendChild(notificacao)
+                                        //define a maquina como danificada
+                                        maquina.setDanificado()
+    
+                                    }
                                 }    
                                     
                                 })
-                                if(dado>=100){
-                                    var div = document.getElementsByClassName("divMaquinaComum"+maquina.getNome().replace(" ", ""))
-                                    var label = document.getElementsByClassName("labelLigaDesliga" +maquina.getNome())
-
-                                    for(var i=0; i<div.length;i++){
-                                        div[i].classList.add("danificado")
-                                        label[i].style.display="none"
-                                        console.log(div[i].classList)
-
-                                    }
-                                    //define a maquina como danificada
-                                    maquina.setDanificado()
-
-                                }
+                                
                             })
                             
                     

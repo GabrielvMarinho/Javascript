@@ -2,10 +2,10 @@
 export class Maquina {
     constructor(nome, tipoGrafico) {
         this.nome = nome;
-        this.temperatura=77;// graus celcius 
-        this.umidade=77;// percentual ->>>>> todos em porcentagem de 0% sendo seguro e 100% sendo crítico
-        this.pressao=77;// milimetros por segundo 
-        this.vibracao=77;// bar 
+        this.temperatura=50;
+        this.umidade=50;// percentual ->>>>> todos em porcentagem de 0% sendo seguro e 100% sendo crítico
+        this.pressao=50;
+        this.vibracao=50;
         this.tipoGrafico = tipoGrafico;
         this.legenda = ["TEMPERATURA", "UMIDADE", "PRESSÃO", "VIBRAÇÃO"];
         this.maquinaON = true;
