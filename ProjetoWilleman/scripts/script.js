@@ -24,7 +24,6 @@ let listaMaquinas =[new Maquina("MAQUINA 1", "polarArea"),
 server.addlistaMaquina(listaMaquinas)
 
 //criando objeto Painel e criando graficos
-
 var lista = [server.getMaquinaIndex(0),server.getMaquinaIndex(1),server.getMaquinaIndex(2)]
 const painel = new PainelDeControle(operador1.getNome(), lista, operador1)
 
@@ -33,16 +32,14 @@ const painel2 = new PainelDeControle(operador2.getNome(), lista, operador2)
 
 var lista = [server.getMaquinaIndex(4)]
 const painel3 = new PainelDeControle(operador3.getNome(), lista, operador3)
-// const painel1 = new PainelDeControle("Painel do gabis", server.getlistaMaquinas())
 
 //adiciona paineis ao server
 server.adicionarPainel(painel)
 server.adicionarPainel(painel2)
 server.adicionarPainel(painel3)
 
-// server.adicionarPainel(painel1)
-
-function atualizarTemperaturas() {
+//função contínua
+function atualizarDados() {
     //FUNÇÃO OBSERVER -> chama todo os objetos na lista de paineis de server e manda os dados para eles
     server.atualizar()
     // mostra o histórico memento e salva, muito importante para não ter spans nas mensagens de erro
@@ -50,10 +47,11 @@ function atualizarTemperaturas() {
     console.log(server.getCaretaker().getListaMementos())
 }
 
-//função que chama o atualizarTemperaturas com um delay
+//função que chama o atualizarDados com um delay
 function iniciarAtualizacao() {
-    atualizarTemperaturas();
-    setInterval(atualizarTemperaturas, 200);
+    atualizarDados();
+    setInterval(atualizarDados, 500);
 }
+
 //chama o metodo quando a janela carregar
 window.onload = iniciarAtualizacao;

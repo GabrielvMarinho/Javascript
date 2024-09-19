@@ -4,7 +4,7 @@ export class Maquina {
         this.nome = nome;
         this.temperatura=50;
         this.umidade=50;// percentual ->>>>> todos em porcentagem de 0% sendo seguro e 100% sendo crítico
-        this.pressao=50;
+        this.pressao=99;
         this.vibracao=50;
         this.tipoGrafico = tipoGrafico;
         this.legenda = ["TEMPERATURA", "UMIDADE", "PRESSÃO", "VIBRAÇÃO"];
@@ -41,7 +41,7 @@ export class Maquina {
         
     }
 
-    getRandomPosi(){//sem o menos um (-1)
+    getRandomPosi(){//sem o menos um (-1) pq deve ser positivo
         return Math.round((Math.random() * 2)*10)/10;
     }
     getRandom(){

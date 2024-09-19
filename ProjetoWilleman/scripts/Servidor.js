@@ -64,6 +64,7 @@ export class Servidor{
         let i =0;
         //matriz que receberá e mandará os dados
         var matriz=[]
+
         //entrar em cada maquina da lista de maquinas
         this.listaMaquinas.forEach(maquina => {
             matriz[i] = []
@@ -87,7 +88,10 @@ export class Servidor{
                                     var achou = false
                                     var dadosCriticos = 80
                                     var hist = false
-
+                                    const data = new Date();
+                                    const horas = String(data.getHours()).padStart(2, '0');
+                                    const minutos = String(data.getMinutes()).padStart(2, '0');
+                                    const segundos = String(data.getSeconds()).padStart(2, '0');
                                     if (dado >= dadosCriticos ){
                                         var notificacao = document.createElement("h1")
                                         notificacao.className = "mensagemErro"
@@ -117,8 +121,13 @@ export class Servidor{
                                         //testa se achou ou se tinha histórico
                                         if(!hist || !achou){
                                             //notificação personalizada baseada na legenda da máquina
+                                            var time=document.createElement("p")
+                                            time.className = "tempo"
                                             notificacao.innerText=`${maquina.getNome()} possui ${legenda[index]} crítica!`
+                                            time.innerText = `${horas}:${minutos}:${segundos}`
+
                                             mensagem.appendChild(notificacao)
+                                            notificacao.appendChild(time)
                                         }
                                         
                                     }    
@@ -134,7 +143,13 @@ export class Servidor{
                                         var mensagem = document.getElementById("mensagem"+painel.getNomePainel())
                                         var notificacao = document.createElement("h1")
                                         notificacao.className = "mensagemErro"
+                                        var time=document.createElement("p")
+                                        time.className = "tempo"
+                                        
                                         notificacao.innerText=`${maquina.getNome()} possui um DEFEITO OPERACIONAL GRAVE!`
+                                        time.innerText = `${horas}:${minutos}:${segundos}`
+                                        notificacao.appendChild(time)
+
                                         mensagem.appendChild(notificacao)
                                         //define a maquina como danificada
                                         maquina.setDanificado()
