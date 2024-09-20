@@ -198,7 +198,7 @@ export class PainelDeControle{
                 }));
             }
             else{
-                console.log("ERRO NÃO É GRÁFICO INSTANCE")
+                console.log("ERRO NÃO É MÁQUINA INSTANCE")
             }
         })
         //criando central de notificações

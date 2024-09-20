@@ -121,7 +121,6 @@ export class Maquina {
             array.push(this.getVibracao())
             return [this.legenda, array]
         } else {
-            
             return [this.legenda, [0,0,0,0]];
         }
     }

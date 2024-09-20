@@ -27,10 +27,10 @@ server.addlistaMaquina(listaMaquinas)
 var lista = [server.getMaquinaIndex(0),server.getMaquinaIndex(1),server.getMaquinaIndex(2)]
 const painel = new PainelDeControle(operador1.getNome(), lista, operador1)
 
-var lista = [server.getMaquinaIndex(3),server.getMaquinaIndex(2),server.getMaquinaIndex(5)]
+lista = [server.getMaquinaIndex(3),server.getMaquinaIndex(2),server.getMaquinaIndex(5)]
 const painel2 = new PainelDeControle(operador2.getNome(), lista, operador2)
 
-var lista = [server.getMaquinaIndex(4)]
+lista = [server.getMaquinaIndex(4)]
 const painel3 = new PainelDeControle(operador3.getNome(), lista, operador3)
 
 //adiciona paineis ao server
@@ -44,7 +44,7 @@ function atualizarDados() {
     server.atualizar()
     // mostra o histórico memento e salva, muito importante para não ter spans nas mensagens de erro
     server.getCaretaker().save(server.createMemento())
-    // console.log(server.getCaretaker().getListaMementos())
+    console.log(server.getCaretaker().getListaMementos())
 }
 
 //função que chama o atualizarDados com um delay
