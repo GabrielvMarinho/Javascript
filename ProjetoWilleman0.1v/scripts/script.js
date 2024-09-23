@@ -8,6 +8,7 @@ import { Operador } from './Operador.js'
 const operador1 = new Operador("gabriel")
 const operador2 = new Operador("bia")
 const operador3 = new Operador("fulano")
+const operador4 = new Operador("Vanessa")
 
 //instanciando server
 const server = new Servidor("server")
@@ -33,10 +34,14 @@ const painel2 = new PainelDeControle(operador2.getNome(), lista, operador2)
 lista = [server.getMaquinaIndex(4)]
 const painel3 = new PainelDeControle(operador3.getNome(), lista, operador3)
 
+
+const painel4 = new PainelDeControle(operador4.getNome(), lista, operador4)
+
 //adiciona paineis ao server
 server.adicionarPainel(painel)
 server.adicionarPainel(painel2)
 server.adicionarPainel(painel3)
+server.adicionarPainel(painel4)
 
 //função contínua
 function atualizarDados() {
