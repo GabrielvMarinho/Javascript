@@ -11,7 +11,7 @@ const operador3 = new Operador("fulano")
 
 //instanciando server
 const server = new Servidor("server")
-
+ 
 //lista de maquinas temporárias //bar, line, radar, doughnut, area
 let listaMaquinas =[new Maquina("MAQUINA 1", "polarArea"),
                     new Maquina("MAQUINA 2", "polarArea"),

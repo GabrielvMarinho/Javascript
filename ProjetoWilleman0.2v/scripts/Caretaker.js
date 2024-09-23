@@ -14,6 +14,8 @@ export class Caretaker{
             this.listaMementos.push(memento) // se tiver menos, só vai adicionar um novo memento no final da fila
         }
     }
+
+    
     getListaMementos(){
         console.clear() // começa limpando o console
         var string = "" // variável inicializada como vazia
