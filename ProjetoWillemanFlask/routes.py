@@ -1,37 +1,37 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, jsonify
 from models import Operador, Maquina
 from forms import SignUpForm, dadosMaquina, cadastroMaquina
 from flask_login import current_user, logout_user, login_user, login_required
 def register_routes(app, db):
 
-    
-    @app.route("/", methods=["GET", "POST"])
-    @login_required
-    def index():
+   
+
+    @app.route("/adicionar_maquinas", methods=["GET", "POST"])
+    def adicionar_maquinas():
         form = cadastroMaquina()
         if form.validate_on_submit():
             maquina = Maquina(
                 nome = form.nome.data,
-                dados = {}
+                dadosDict = {}
             )
             db.session.add(maquina)
+            current_user.maquinas.append(maquina)
             db.session.commit()
-            return "deu certo a principio"
-        return render_template("index.html", form = form)
+            return redirect(url_for("pagina_principal"))
+        return render_template("adicionar_maquinas.html", form=form)
     
-    @app.route("/adicionando_atributos", methods=["GET", "POST"])
-    def addAtributo():
-        form = dadosMaquina()
-        maquina = Maquina.query.get(1)
-        
-        if form.validate_on_submit():
-            maquina.dados = {form.nomedado.data:123}
-            db.session.commit()
-
-            return render_template("adicionar_dados.html", form=form)
-        return render_template("adicionar_dados.html", form=form)
+    @app.route("/pagina_principal")
+    @login_required
+    def pagina_principal():
+        return render_template("pagina_principal.html")
     
-
+    #routes relacionado ao login-----------------------------------------------------
+    @app.route("/sair")
+    @login_required
+    def sair():
+        logout_user
+        return redirect(url_for("login"))
+    
     @app.route('/signup', methods=["GET", "POST"])
     def signup():
         form = SignUpForm()
@@ -43,12 +43,11 @@ def register_routes(app, db):
             
             db.session.add(operador)
             db.session.commit()
-            return "operador cadastrado"
+            return redirect(url_for("login"))
         return render_template('signup.html', form=form)
 
-    @app.route('/login', methods=["GET", "POST"])
+    @app.route('/', methods=["GET", "POST"])
     def login():
-
         form = SignUpForm()
         if form.validate_on_submit():
             nome = form.username.data
@@ -56,12 +55,28 @@ def register_routes(app, db):
             if operador:
                 if operador.password == form.password.data:
                     login_user(operador)
-                    return redirect(url_for("index"))
+                    return redirect(url_for("pagina_principal"))
                 else:
                     return "errou a senha faca denovo"
             else:
                 return "n existe esse usuário"
         return render_template('login.html', form=form)
+    #------------------------------------------------------------------------
 
+
+    @app.route("/adicionando_atributos", methods=["GET", "POST"])
+    def add_atributo():
+        form = dadosMaquina()
+        maquina = Maquina.query.get(2)
+
+        if form.validate_on_submit():
+            maquina.dadosDict[form.nomedado.data] = 100
+
+            db.session.commit()
+        return render_template('adicionar_dados.html', form=form)  
+
+    
+
+    
     
     

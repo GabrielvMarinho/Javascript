@@ -1,4 +1,7 @@
 from app import db
+from sqlalchemy.ext.mutable import MutableDict
+from sqlalchemy import JSON
+
 from flask_login import UserMixin
 
 operador_maquina = db.Table("operador_maquina",
@@ -17,6 +20,6 @@ class Maquina(db.Model):
     __tablename__ = 'maquina'
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.Text, nullable = False)
-    dados = db.Column(db.JSON, default=dict)
+    dadosDict = db.Column(MutableDict.as_mutable(JSON))
     
 
