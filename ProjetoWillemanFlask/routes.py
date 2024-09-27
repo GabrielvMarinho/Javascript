@@ -6,7 +6,24 @@ def register_routes(app, db):
 
    
 
+    @app.route("/adicionando_atributos", methods=["GET", "POST"])
+    @login_required
+
+    def add_atributo():
+        form = dadosMaquina()
+        maquina = Maquina.query.get(2)
+
+        if form.validate_on_submit():
+            maquina.dadosDict[form.nomedado.data] = 100
+
+            db.session.commit()
+        return render_template('adicionar_dados.html', form=form)  
+
+    
+
+
     @app.route("/adicionar_maquinas", methods=["GET", "POST"])
+    @login_required
     def adicionar_maquinas():
         form = cadastroMaquina()
         if form.validate_on_submit():
@@ -19,6 +36,12 @@ def register_routes(app, db):
             db.session.commit()
             return redirect(url_for("pagina_principal"))
         return render_template("adicionar_maquinas.html", form=form)
+    
+    @app.route("/minhas_maquinas")
+    @login_required
+    def minhas_maquinas():
+        maquinas = current_user.maquinas
+        return render_template("minhas_maquinas.html", maquinas=maquinas)
     
     @app.route("/pagina_principal")
     @login_required
@@ -62,20 +85,6 @@ def register_routes(app, db):
                 return "n existe esse usuário"
         return render_template('login.html', form=form)
     #------------------------------------------------------------------------
-
-
-    @app.route("/adicionando_atributos", methods=["GET", "POST"])
-    def add_atributo():
-        form = dadosMaquina()
-        maquina = Maquina.query.get(2)
-
-        if form.validate_on_submit():
-            maquina.dadosDict[form.nomedado.data] = 100
-
-            db.session.commit()
-        return render_template('adicionar_dados.html', form=form)  
-
-    
 
     
     
