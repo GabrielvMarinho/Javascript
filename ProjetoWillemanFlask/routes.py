@@ -20,7 +20,19 @@ def register_routes(app, db):
         return render_template('adicionar_dados.html', form=form)  
 
     
-
+    #mostra a lista de máquinas para adicionar a relação
+    @app.route("/adicionar_relação", methods=["GET", "POST"])
+    def add_relacao():
+        maquinas = Maquina.query.all()
+        return render_template("adicionar_relação.html", maquinas = maquinas)
+    #adiciona a relação de fato
+    @app.route("/add_rel<id>", methods=["GET", "POST"])
+    def add_rel(id):
+        maquina = Maquina.query.filter(id = id)
+        current_user.maquinas.append(maquina)# cria a relação de maquina e usuário
+        db.session.commit()
+        maquinas = Maquina.query.all()
+        return render_template("adicionar_relação.html", maquinas =maquinas)
 
     @app.route("/adicionar_maquinas", methods=["GET", "POST"])
     @login_required
@@ -32,7 +44,6 @@ def register_routes(app, db):
                 dadosDict = {}
             )
             db.session.add(maquina)
-            current_user.maquinas.append(maquina)
             db.session.commit()
             return redirect(url_for("pagina_principal"))
         return render_template("adicionar_maquinas.html", form=form)
