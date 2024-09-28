@@ -8,7 +8,6 @@ def register_routes(app, db):
 
     @app.route("/adicionando_atributos", methods=["GET", "POST"])
     @login_required
-
     def add_atributo():
         form = dadosMaquina()
         maquina = Maquina.query.get(2)
@@ -24,15 +23,16 @@ def register_routes(app, db):
     @app.route("/adicionar_relação", methods=["GET", "POST"])
     def add_relacao():
         maquinas = Maquina.query.all()
-        return render_template("adicionar_relação.html", maquinas = maquinas)
+        return render_template("adicionar_relacao.html", maquinas = maquinas)
+    
     #adiciona a relação de fato
     @app.route("/add_rel<id>", methods=["GET", "POST"])
     def add_rel(id):
-        maquina = Maquina.query.filter(id = id)
+        maquina = Maquina.query.filter_by(id = id).first()
         current_user.maquinas.append(maquina)# cria a relação de maquina e usuário
         db.session.commit()
         maquinas = Maquina.query.all()
-        return render_template("adicionar_relação.html", maquinas =maquinas)
+        return render_template("adicionar_relacao.html", maquinas =maquinas)
 
     @app.route("/adicionar_maquinas", methods=["GET", "POST"])
     @login_required
