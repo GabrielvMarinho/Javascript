@@ -1,0 +1,64 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins";
+    font-weight: 600;
+    color: #fffffff3;
+
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgb(135,85,167);
+background: linear-gradient(90deg, rgba(135,85,167,1) 0%, rgba(196,101,101,1) 50%, rgba(195,156,100,1) 100%);
+    height: 100vh;
+    gap: 1vw;
+}
+input{
+    outline: none;
+    border: 0;
+}
+#nome{
+    width: 15vw;
+    height: 2.5vw;
+    border-radius: 0.5vw;
+    padding-inline: 0.5vw;
+    color: rgb(226, 121, 107);
+}
+h1{
+    font-size: 2vw;
+    opacity: 0.8;
+}
+h2{
+    font-size: 3vw;
+}
+h3{
+    opacity: 0.8;
+
+}
+.sectionText{
+    display: flex;
+    gap:1vw
+}
+.flex{
+    display: flex;
+    gap:1vw;
+    
+}
+.button{
+    color: rgb(139, 77, 69);
+    padding: 0.5vw;
+    border-radius: 100vw;
+    padding-inline: 4vw;
+    font-size: 1.5vw;
+    border: rgba(255, 255, 255, 0) solid 2px;
+
+}
+.button:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: white solid 2px;
+    color: #fffffff3;
+}
